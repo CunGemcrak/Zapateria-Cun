@@ -6,7 +6,7 @@
 # **Proyecto desarrollado por:**
 <br/>
  <h2> 💼 Scrum-Master </h2>
- Mateo Jiménez Herrera**
+ Mateo Jiménez Herrera* ficha 53305*
 <br/>
  <h2> ⚙️ Desarrolladores Back </h2>
  - Cristian Ríos Caamaño ficha 53307** 
