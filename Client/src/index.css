@@ -1,58 +1,15 @@
 body {
-  background-color: black;
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+ 
+  background-color: #f7e1e1;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  max-width: 1200px;
-  min-width: 350px;
-  width: 100%;
-  display: flex;
-
 }
-
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-/*Botones 1*/
-.ov-btn-grow-box {
-  background: red; /* color de fondo */
-  width: 150px;
-  color: white; /* color de fuente */
-  border: 2px solid black; /*#4741d7;  tamaño y color de borde */
-  padding: 5px 10px;
-  border-radius: 20px; /* redondear bordes */
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  display: inline-block;
-  font-weight: bolder;
-}
-.ov-btn-grow-box:hover {
-  color: #fff;/* color de fuente hover */
-  cursor: pointer;
-}
-.ov-btn-grow-box::after {
-  content: "";
-  background: green; /* color de fondo hover */
-  border: 2px groove red;
-  border-radius: 20px; /* redondear bordes */
-  position: absolute;
-  z-index: -1;
-  padding: 5px 10px;
-  display: block;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  transform: scale(0, 0);
-  transition: all 0.3s ease;
-}
-.ov-btn-grow-box:hover::after {
-  transition: all 0.3s ease-out;
-  transform: scale(1, 1);
-}
-/*botones 2*/
