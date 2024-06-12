@@ -1,10 +1,10 @@
 .body_loading{
-        background-color: black;
+    background-color: rgb(173, 70, 176);
         width: 100vh; 
         display: block;
         color: white;
         width: 100vw;
-        height: 90vh;
+        height: 100vh;
         display: flex;
         flex-direction: column; /* Cambiado para alinear los elementos en columna */
         text-align: center;
@@ -35,4 +35,8 @@
       
     }
 
-    
+    .img-loading-carga{
+        border: red 2px groove;
+        border-radius: 100%;
+        
+    }
