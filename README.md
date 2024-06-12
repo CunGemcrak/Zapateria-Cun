@@ -6,19 +6,19 @@
 # **Proyecto desarrollado por:**
 <br/>
  <h2> 💼 Scrum-Master </h2>
- Mateo Jiménez Herrera* ficha 53305*
+ Mateo Jiménez Herrera* ficha *53305*
 <br/>
  <h2> ⚙️ Desarrolladores Back </h2>
- - Cristian Ríos Caamaño ficha 53307** 
+ - Cristian Ríos Caamaño ficha *53307*
 <br/>
-- Luis Alberto Buelvas Cogollo  ficha 53307** 
+- Luis Alberto Buelvas Cogollo  ficha *53307* 
 <br/>
 
 
 <h2> ⚙️ Desarrolladores Front </h2>
-- Camila Andrea Herrera Gamboa ficha 53307
+- Camila Andrea Herrera Gamboa ficha *53307*
 <br/>
-- Mateo Jiménez Herrera ficha 53305**
+- Mateo Jiménez Herrera ficha *53305*
 <br/>
 <br/>
 
