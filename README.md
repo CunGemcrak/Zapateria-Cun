@@ -15,7 +15,7 @@
 <br/>
 
 
-<h2> ⚙️ Desarrolladores From </h2>
+<h2> ⚙️ Desarrolladores Front </h2>
 - Camila Andrea Herrera Gamboa ficha 53307
 <br/>
 - Mateo Jiménez Herrera ficha 53305**
