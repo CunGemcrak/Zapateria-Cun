@@ -10,17 +10,14 @@
         text-align: center;
         justify-content: center;
         align-items: center;
+        overflow-y:hidden; /* Permitir desplazamiento, pero ocultar la barra */
+   
         
     
     }
-   
-.contenido{
-        display: flex;
-        flex-direction: column; /* Cambiado para alinear los elementos en columna */
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-}
+
+
+
 
     .Atleticos_Loading{
         width: 300px;
@@ -38,5 +35,5 @@
     .img-loading-carga{
        /*   border: red 2px groove;
       border-radius: 100%;*/
-        
+      overflow-y:hidden;  
     }
