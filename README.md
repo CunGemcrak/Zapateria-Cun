@@ -9,16 +9,16 @@
  Mateo Jiménez Herrera**
 <br/>
  <h2> ⚙️ Desarrolladores Back </h2>
- - Cristian Ríos Caamaño** 
+ - Cristian Ríos Caamaño ficha 53307** 
 <br/>
-- Luis Alberto Buelvas Cogollo** 
+- Luis Alberto Buelvas Cogollo  ficha 53307** 
 <br/>
 
 
 <h2> ⚙️ Desarrolladores From </h2>
-- Camila Andrea Herrera Gamboa
+- Camila Andrea Herrera Gamboa ficha 53307
 <br/>
-- Mateo Jiménez Herrera**
+- Mateo Jiménez Herrera ficha 53305**
 <br/>
 <br/>
 
