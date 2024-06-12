@@ -4,16 +4,18 @@ import { Routes,Route} from "react-router-dom";
 
 
 
-import Loading from './Component/loading/Loading';
-import Login from './Component/Login/Login_General/Login_General'
+
+
+import LoginPrincipal from './Component/Login/Login_Principal/LoginPrincipal';
 
 
 function App() {
   return (
     <div className="App">
       <Routes>
-              <Route path='/login' element={<Login/>}/>
-              <Route path='/' element={<Loading/>}/>
+              <Route path='/' element={<LoginPrincipal/>}/>
+              {//<Route path='/' element={<Loading/>}/>
+              }
       </Routes>
      
 
