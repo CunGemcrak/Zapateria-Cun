@@ -1,44 +1,62 @@
-import { useEffect, useState } from "react";
-import './LoginPrincipal.css';
-import Loading from "../../loading/Loading";
-import LoginUser from "../Login_User/Login_User";
+import React, { useState } from 'react';
 
-const LoginPrincipal = () => {
-  const [logueo, setLogueo] = useState("login"); // Cambiado de "flase" a "login" para probar
-  const [loading, setLoading] = useState(true);
+const LoginPrincipal = ({ registeredUsername }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
 
-    return () => clearTimeout(timer);
-  }, []);
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Aquí podrías agregar la lógica para enviar los datos de inicio de sesión al servidor
+    // Por ahora, simplemente imprimimos los datos en la consola y simulamos un inicio de sesión exitoso
+    console.log('Usuario:', username);
+    console.log('Contraseña:', password);
+    // Simulamos un inicio de sesión exitoso
+    setLoggedIn(true);
+  };
 
   return (
-    <>
-      {
-        loading 
-          ? <Loading />
-          : (
-            <div className="BodyLogin">
-              <div className="izquierdaGeneral">
-                {/* <Carrucel className="carrucel" /> */}
-              </div>
-              <div className="derechaGeneral">
-                {logueo === "login" && <LoginUser setView={setLogueo} />}
-                {/* 
-                {logueo === "recuperarkey" && <Recuperarkey setView={setLogueo} />}
-                {logueo === "registro" && <Registrarse setView={setLogueo} />}
-                {logueo === "registroEmpresa" && <RegistrarseEmpresa setView={setLogueo} />}
-                {logueo === "null" && <LoginInvitado setView={setLogueo} />} 
-                */}
-              </div>
-            </div>
-          )
-      }
-    </>
+    <div>
+      {loggedIn ? (
+        <div>
+          <h2>Bienvenido, {username}!</h2>
+          <button onClick={() => setLoggedIn(false)}>Cerrar sesión</button>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <h2>Iniciar sesión</h2>
+          {registeredUsername && <p>¡Usuario {registeredUsername} registrado exitosamente!</p>}
+          <div>
+            <label htmlFor="username">Usuario:</label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={handleUsernameChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Contraseña:</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </div>
+          <button type="submit">Iniciar sesión</button>
+        </form>
+      )}
+    </div>
   );
-}
+};
 
 export default LoginPrincipal;
