@@ -11,3 +11,7 @@
      /*   border: red 2px groove;
     border-radius: 100%;*/   
   }
+
+  .btn-regresar{
+    cursor: pointer;
+}

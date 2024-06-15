@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 
-const OlvideContrasena = () => {
+import './Olvidecontrasena.css'
+
+const OlvideContrasena = ({setView}) => {
   const [email, setEmail] = useState('');
 
  
-const handleSubmit = () => {
-  alert ("este es una prueba")
-}
+
   return (
     <div>
       <h2>¿Olvidaste tu contraseña?</h2>
-      <form onClick={handleSubmit}>
+      <div >
         <label>
           Ingresa tu correo electrónico:
           <input
@@ -21,7 +21,8 @@ const handleSubmit = () => {
           />
         </label>
         <button type="submit">Enviar</button>
-      </form>
+        <div onClick={()=>{setView('login')}} className='btn-regresar'>Regresar</div>
+      </div>
     </div>
   );
 };
