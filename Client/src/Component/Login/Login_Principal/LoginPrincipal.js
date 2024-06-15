@@ -20,9 +20,8 @@ const LoginPrincipal = ()=>{
             loading && <Loading/>
             
         }
-        Cargo la pagina
-        <Loading/>
-        <OlvideContrasena/>
+       <OlvideContrasena/>
+        
         </>
 )
 

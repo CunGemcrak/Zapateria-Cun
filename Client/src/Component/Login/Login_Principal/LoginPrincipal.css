@@ -1,0 +1,50 @@
+.BodyLogin {
+    inline-size: 100%;
+    block-size: 100vh;
+    margin: 0;
+    display: flex;
+  }
+  
+  .izquierdaGeneral {
+    inline-size: 50%;
+    block-size: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: url("../Login_Principal/img/istockphoto-1134757670-1024x1024.jpg")
+    no-repeat center center;
+    background-size: cover;
+  }
+  
+  .carrucel {
+    position: relative;
+    z-index: 3;
+  }
+  
+  .derechaGeneral {
+    inline-size: 50%;
+    block-size: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @media (max-inline-size: 868px) {
+    .BodyLogin {
+      flex-direction: column;
+    }
+  
+    .izquierdaGeneral {
+      display: none;
+    }
+  
+    .derechaGeneral {
+      inline-size: 100%;
+    }
+  }
+  
+  

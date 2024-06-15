@@ -1,34 +1,55 @@
-.container_interno{
-    color: red;
-    display: flex;
-    width: 100vw;
-    height: 90vh;
-    margin: 0;
-    padding: 0;
-
-}
-.loading_izquierda{
-    background-color: brown;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
-    .Escudo{
-        width: 70%;
-        height: auto;
-        max-width: 100%;
-        border-radius: 100%;
-        border:2px white groove;
-    }
-}
-.loading_derecha{
-    background-color: white;
-    width: 50%;
-   color: black;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+.login-form {
+    max-inline-size: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .form-group {
+    margin-block-end: 20px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  input {
+    inline-size: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .password-input {
+    position: relative;
+  }
+  
+  .toggle-password {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-end: 5px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .submit-button {
+    inline-size: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  
