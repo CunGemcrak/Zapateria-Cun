@@ -2,11 +2,19 @@ import './Login_User.css'
 import React, { useState } from 'react';
 // Importamos los íconos de ojo abierto y cerrado
 
+
+import icono_key from './img/iconos/contrasena.png'
+import icono_ocultar from './img/iconos/cerrar-ojo-black.png'
+import icono_ver from './img/iconos/ojo-con-pestanas-black.png'
+
 const LoginUser = ({setView}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [keyVisible,setkeyVisible] =useState(true)
 
-
+  const hondlekey = ()=>{
+    setkeyVisible(!keyVisible)
+  }
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
@@ -27,30 +35,56 @@ const LoginUser = ({setView}) => {
  
 
   return (
-    <form onSubmit={handleSubmit}>
+    <dev className="body-Login" >
       <div>
-        <label htmlFor="username">Usuario:</label>
+        <h1 className='Titulos'>Ingresar</h1>
+        <div className='Login-container-input'>
+
+        <div className="input-group">
+        
         <input
           type="text"
           id="username"
           value={username}
           onChange={handleUsernameChange}
+          maxLength={100}
+          placeholder="Celular/Correo"
         />
       </div>
+     
       <div>
-        <label htmlFor="password">Contraseña:</label>
-        <input
-          type={ 'password'}
-          id="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-        <button>ingresar</button>
+      <div className="input-group">
+                <img src={icono_key} alt="icono ingreso" />
+                
+                <input
+                  type={ keyVisible?'password':'text'}
+                  id="password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  maxLength={15}
+                  placeholder="Contraseña"
+                />
+
+<img
+              src={keyVisible ? icono_ocultar : icono_ver}
+              alt="Mostrar/Ocultar"
+              onClick={hondlekey}
+              className="password-toggle"
+            />
+
+
+
+
+
+        </div>
+        </div>
+       
+        </div>
       </div>
-      <button type="submit">Iniciar sesión</button>
-      <div onClick={() => setView("recuperarkey")} className='btn-regresar'>olvidaste la contraseña</div>
-      <div onClick={() => setView("registro")} className='btn-regresar'>Registrar Usuario</div>
-    </form>
+      <div onClick={() => setView("recuperarkey")} className='btn-Link espacios'>olvidaste la contraseña</div>
+      <div onClick={handleSubmit} className='btn-Enviar'>Iniciar sesión</div>
+      <div onClick={() => setView("registro")} className='btn-Link espacios'>Registrar Usuario</div>
+    </dev>
   );
 };
 
