@@ -1,11 +1,11 @@
 import './Login_User.css'
 import React, { useState } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';// Importamos los íconos de ojo abierto y cerrado
+// Importamos los íconos de ojo abierto y cerrado
 
 const LoginUser = ({setView}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
+
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -15,9 +15,7 @@ const LoginUser = ({setView}) => {
     setPassword(event.target.value);
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -42,17 +40,16 @@ const LoginUser = ({setView}) => {
       <div>
         <label htmlFor="password">Contraseña:</label>
         <input
-          type={showPassword ? 'text' : 'password'}
+          type={ 'password'}
           id="password"
           value={password}
           onChange={handlePasswordChange}
         />
-        <button type="button" onClick={togglePasswordVisibility}>
-          {showPassword ? <FaEyeSlash/> : <FaEye />}
-        </button>
+        <button>ingresar</button>
       </div>
       <button type="submit">Iniciar sesión</button>
       <div onClick={() => setView("recuperarkey")} className='btn-regresar'>olvidaste la contraseña</div>
+      <div onClick={() => setView("registro")} className='btn-regresar'>Registrar Usuario</div>
     </form>
   );
 };
