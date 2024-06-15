@@ -1,4 +1,5 @@
 
+
 import React, { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Importamos los íconos de ojo abierto y cerrado
 
@@ -55,4 +56,5 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+
 
