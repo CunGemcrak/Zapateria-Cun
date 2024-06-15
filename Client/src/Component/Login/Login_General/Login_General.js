@@ -1,9 +1,10 @@
+import OlvideContrasena from "../../Olvidecontrasena/Olvidecontrasena";
 
 const Login = () => {
     
     return (
         <div className="contenedor_Login">
-            DEsarrollo del login
+            <OlvideContrasena/>
         </div>
     );
 }

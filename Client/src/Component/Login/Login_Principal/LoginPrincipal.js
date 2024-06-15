@@ -1,3 +1,4 @@
+import OlvideContrasena from "../../Olvidecontrasena/Olvidecontrasena";
 import Loading from "../../loading/Loading";
 
 import {useEffect, useState} from "react"
@@ -21,6 +22,7 @@ const LoginPrincipal = ()=>{
         }
         Cargo la pagina
         <Loading/>
+        <OlvideContrasena/>
         </>
 )
 
