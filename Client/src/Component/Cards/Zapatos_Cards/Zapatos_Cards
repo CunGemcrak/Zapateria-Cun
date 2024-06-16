@@ -1,0 +1,4 @@
+const ZapatosCards =()=>{
+    return <></>
+}
+export default ZapatosCards;

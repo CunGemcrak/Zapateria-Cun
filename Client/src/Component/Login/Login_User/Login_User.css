@@ -4,14 +4,14 @@
   justify-content: center;
   align-items: center;
   height: 600px;
-  border: 2px red solid ;
+  border: 2px red solid;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 /*input contenedores */
-.Login-container-input{
+.Login-container-input {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -21,14 +21,13 @@
 }
 
 /* contenedor de imagenes e input*/
-
 .input-group {
   display: flex;
   align-items: center;
   justify-content: center;
   border: 2px groove gainsboro;
   border-radius: 10px;
-  height: 35px;
+  height: 40px;
   margin-top: 20px;
   padding: 5px;
   width: 350px;
@@ -40,7 +39,7 @@
   border: none;
   outline: none;
   background-color: transparent;
-  width: 90%;
+  width: 80%;  /* Cambiado para hacer espacio para el icono */
   font-size: 16px;
 }
 
@@ -48,15 +47,23 @@
   max-width: 20px;
   height: auto;
   margin: 5px;
+  cursor: pointer;
 }
-/*Titulos*/
 
+/* Agregar clase para el icono de mostrar/ocultar */
+.toggle-icon {
+  max-width: 20px;
+  height: auto;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/*Titulos*/
 .Titulos {
-  text-align: center; 
-  font-family: Comic Sans MS; 
-  font-weight:bold; 
-  font-size: 30px; 
- 
+  text-align: center;
+  font-family: Comic Sans MS;
+  font-weight: bold;
+  font-size: 30px;
   background: linear-gradient(to right, #ff0000, #000000); /* Degradado de izquierda a derecha */
   -webkit-background-clip: text;
   color: transparent;
@@ -64,15 +71,13 @@
 }
 
 /*margenes*/
-.espacios{
-
-  margin:10px;
+.espacios {
+  margin: 10px;
   padding: 10px;
 }
-/* boton de link*/
-  
-.btn-Link {
 
+/* boton de link*/
+.btn-Link {
   position: relative;
   margin: 10px;
   display: block;
@@ -114,11 +119,10 @@
 }
 
 /*boton del login*/
-
 .btn-Enviar {
   margin-top: 20px;
   margin-bottom: 20px;
-  height: 30px;
+  height: 40px;
   background: linear-gradient(283deg, #ff2426, #ff9259);
   width: 350px;
   color: white;
@@ -137,6 +141,7 @@
   color: #fff;
   cursor: pointer;
 }
+
 .btn-Enviar::after {
   content: "";
   background: #030303;
@@ -151,6 +156,7 @@
   transform: scale(0, 0);
   transition: all 0.3s ease;
 }
+
 .btn-Enviar:hover::after {
   transition: all 0.3s ease-out;
   transform: scale(1, 1);

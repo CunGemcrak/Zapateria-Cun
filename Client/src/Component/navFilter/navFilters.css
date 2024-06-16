@@ -1,0 +1,26 @@
+.navfilter-container {
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+  }
+  
+  .navfilter-title {
+    margin-bottom: 20px;
+  }
+  
+  .navfilter-section {
+    margin-bottom: 20px;
+  }
+  
+  .navfilter-subtitle {
+    margin-bottom: 10px;
+  }
+  
+  .navfilter-option {
+    margin-bottom: 5px;
+  }
+  
+  .navfilter-option input {
+    margin-right: 10px;
+  }
+  
