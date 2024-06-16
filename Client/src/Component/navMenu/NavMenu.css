@@ -1,0 +1,107 @@
+/* Basic styling for navbar */
+.navbar {
+  background-color: black;
+  height: 40px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: flex-end; /* Alinea todo el contenido al final (derecha) */
+  align-items: center;
+}
+.nav-list {
+display: flex;
+justify-content: flex-end;
+align-items: center;
+}
+/* Styling for nav items */
+.nav-item {
+  display: flex;
+  margin-left: 20px;
+  height: 100%;
+  align-items: center;
+  position: relative; /* Añadido para posicionar correctamente el submenu */
+}
+
+/* Styling for nav links */
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  margin-left: 10px; /* Agregado margen entre elementos */
+}
+
+/* Active link styling */
+.nav-link.active {
+  color: gray;
+}
+
+/* Search container styling */
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+
+.search-input {
+  border: none;
+  margin-left: 5px;
+  height: 20px;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.icon {
+  color: white;
+  font-size: 20px;
+  margin-right: 5px; /* Añade un margen derecho a los iconos para separarlos del texto */
+}
+
+/* Logout button styling */
+.logout-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.logout-button:hover .icon,
+.nav-link:hover {
+  color: gray;
+  cursor: pointer;
+}
+
+/* Submenu styling */
+.submenu {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  background-color: black;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(253, 0, 0, 0.5); /* Borde sombreado blanco */
+  padding: 10px;
+  display: none;
+  flex-direction: column; /* Cambiado a row para mostrar horizontalmente */
+}
+
+.nav-item:hover .submenu {
+  display: flex;
+}
+/* Alinea el div con la imagen a la izquierda */
+.icon-zap {
+  display: flex;
+  align-items: center; /* Alinea verticalmente al centro */
+  margin-right: auto; /* Empuja el div a la izquierda */
+  
+}
+
+/* Estilo para la imagen */
+.iamgen-icon {
+  width: 45px;
+  border-radius: 100%;
+  box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5); /* Resplandor leve alrededor */
+}
