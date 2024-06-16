@@ -1,6 +1,6 @@
 const PerfilUser =()=>{
     return <>
-    perfil del usuario
+    este es el perfil de usuario perfil del usuario
     </>
 }
 export default PerfilUser;
