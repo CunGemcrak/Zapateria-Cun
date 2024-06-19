@@ -1,10 +1,9 @@
 const { DataTypes } = require('sequelize');
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
+
 module.exports = (sequelize) => {
-  // defino el modelo
-  sequelize.define('Calidad', {
-    id : {
+  // Defino el modelo y lo asigno a una variable
+  const Calidad = sequelize.define('Calidad', {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
@@ -15,12 +14,13 @@ module.exports = (sequelize) => {
     }
   }, { timestamps: false });
 
+  // Agregar hook para insertar datos iniciales después de sincronizar
   Calidad.addHook('afterSync', async () => {
     const initialData = ['AAA', 'AA', 'Tipo Original', 'Original'];
     for (const tipo of initialData) {
-      await Calidad.findOrCreate({ where: { Tipo: tipo } });
+      await Calidad.findOrCreate({ where: { tipo } });
     }
   });
 
+  return Calidad;
 };
-
