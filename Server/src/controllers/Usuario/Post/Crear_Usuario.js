@@ -2,11 +2,6 @@
 const { User } = require('../../../db.js')
 const { Op } = require('sequelize');
 
-
-
-
-
-
 const CrearUsuario = async (req, res) => {
     const { name, apell, correo, password, url, state } = req.body;
     console.log('Este es el query: ' + JSON.stringify(req.body));
@@ -21,12 +16,7 @@ const CrearUsuario = async (req, res) => {
       }
   
       const consultaUser = await User.findOne({
-        where: {
-         
-            email: correo }
-            
-         
-        
+        where: {email: correo }
       });
   
       if (consultaUser) {
