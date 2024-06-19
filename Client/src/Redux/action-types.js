@@ -1,6 +1,5 @@
-export const REGISTRAR = 'REGISTRAR'
-export const  RECUPERAKEY = 'RECUPERAKEY'
-export const VERIFICAR = 'VERIFICAR'
+export const BUSCARUSUARIO = 'BUSCARUSUARIO'
+
 /*export const TEMPERAMENTO = 'TEMPERAMENTO'
 export const FILTROINPUT = 'FILTROINPUT'
 export const ORDERAZ = 'ORDERAZ'
