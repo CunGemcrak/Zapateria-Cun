@@ -7,9 +7,19 @@ module.exports = (sequelize) => {
             primaryKey: true,
             autoIncrement: true,
         },
-        name: {
+        marca: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        costo: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        marca: {
             type: DataTypes.STRING,
             allowNull: false,
         }
+        
+
     }, { timestamps: false });
 };
