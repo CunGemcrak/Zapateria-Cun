@@ -10,7 +10,7 @@ const BusquedaUsuario = async (req, res) => {
             return res.status(404).json({ message: 'Faltan el correo o la contraseña' });
         }
 
-        const usuarioEncontrado = await User.findOne({
+        const data = await User.findOne({
             where: {
                 [Op.or]: [
                     { email: correo },
@@ -20,9 +20,9 @@ const BusquedaUsuario = async (req, res) => {
             }
         });
 
-        if (usuarioEncontrado) {
-            console.log('Usuario encontrado:', usuarioEncontrado);
-            return res.status(200).json({ usuario: usuarioEncontrado });
+        if (data) {
+            console.log('Usuario encontrado:', data);
+            return res.status(200).json({ data});
         } else {
             console.log('Usuario no encontrado');
             return res.status(404).json({ message: 'Usuario no encontrado' });
