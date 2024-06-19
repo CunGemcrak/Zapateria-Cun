@@ -1,5 +1,5 @@
 //const { JSON } = require('sequelize');
-const { Dog, Temperaments} = require('../db.js')
+const { Dog, Temperaments} = require('../../db.js')
 const axios = require('axios')
 const {URL, URL2, APPI_KEY} = process.env;
 

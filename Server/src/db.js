@@ -6,18 +6,14 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST, DB_NAME,
 } = process.env;
 
-/*const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/dogs`, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-});*/
 const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
   host: DB_HOST,
   dialect: 'mysql',
   logging: false, // set to console.log to see the raw SQL queries
   native: false,  // lets Sequelize know we can use pg-native for ~30% more speed
 });
-const basename = path.basename(__filename);
 
+const basename = path.basename(__filename);
 const modelDefiners = [];
 
 // Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al arreglo modelDefiners
@@ -34,9 +30,18 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
+// Sincronizamos los modelos con la base de datos (crea las tablas si no existen)
+sequelize.sync({ alter: false })
+  .then(() => {
+    console.log('Tablas sincronizadas correctamente.');
+  })
+  .catch((error) => {
+   // console.error('Error al sincronizar tablas:', error);
+  });
+
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { User, Zapatos, Color, Empresa, Talla, Venta } = sequelize.models;
+const { User, Zapatos, Color, Empresa, Talla, Venta, Calidad } = sequelize.models;
 //!RElacion de zapatos con color es de muchos a muchos
 const Zapatos_Color = sequelize.define('Zapatos_Color', {}, { timestamps: false })
 Zapatos.belongsToMany(Color, { through: 'Zapatos_Color' })
@@ -58,6 +63,6 @@ Venta.belongsToMany(User, { through: 'User_Venta' })
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
- User, Zapatos, Color, Empresa, Talla, Venta, Zapatos_Color, Zapatos_Talla, User_Venta,
+ User, Zapatos, Color, Empresa, Talla, Venta, Calidad, Zapatos_Color, Zapatos_Talla, User_Venta,
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
 };

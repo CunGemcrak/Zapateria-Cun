@@ -1,5 +1,5 @@
 const { JSON } = require('sequelize');
-const { Dog, Temperaments} = require('../db.js')
+const { Dog, Temperaments} = require('../../db.js')
 
 /*
 Imagen.*
