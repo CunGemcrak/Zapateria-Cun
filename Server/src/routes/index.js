@@ -8,7 +8,7 @@ const router = Router();
 
 //!MEtodos Usuario 
 router.post('/user/create', CrearUsuario)
-router.get('/user', BusquedaUsuario)
+router.get('/user/:correo/:pass', BusquedaUsuario);
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
