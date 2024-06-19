@@ -4,8 +4,11 @@ import React, { useState } from 'react';
 import icono_key from './img/iconos/contrasena.png'
 import icono_ocultar from './img/iconos/cerrar-ojo-black.png'
 import icono_ver from './img/iconos/ojo-con-pestanas-black.png'
+import {useDispatch} from 'react-redux'
+import { Buscar_User } from '../../../Redux/actions';
 
 const LoginUser = ({ setView }) => {
+  const dispatch = useDispatch()
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [keyVisible, setKeyVisible] = useState(true);
@@ -27,6 +30,7 @@ const LoginUser = ({ setView }) => {
     // Aquí podrías agregar la lógica para enviar los datos de inicio de sesión al servidor
     console.log('Usuario:', username);
     console.log('Contraseña:', password);
+    dispatch(Buscar_User(username, password))
   };
 
   return (

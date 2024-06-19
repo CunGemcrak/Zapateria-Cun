@@ -1,22 +1,18 @@
-import { REGISTRAR,VERIFICAR } from "./action-types";
+import { BUSCARUSUARIO } from "./action-types";
 
 const initialState = {
-    Registrado: null,
-    copydogs:[],
-    temperamento:[]
+    USER: null,
+
 }
 
 const reducer = (state= initialState, {type, payload})=>{
    // console.log("entro al reducer la informacion" + payload);
     switch( type ){
-        case REGISTRAR:
+        case BUSCARUSUARIO:
             return{
-                ...state, Registrado:payload
+                ...state, USER:payload
             }
-        case VERIFICAR:
-            return{
-                ...state, Registrado:payload
-            } 
+       
             default:
                 return {...state}
         }
