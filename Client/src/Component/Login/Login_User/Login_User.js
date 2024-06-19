@@ -5,10 +5,12 @@ import icono_key from './img/iconos/contrasena.png'
 import icono_ocultar from './img/iconos/cerrar-ojo-black.png'
 import icono_ver from './img/iconos/ojo-con-pestanas-black.png'
 import {useDispatch} from 'react-redux'
+import { useNavigate } from "react-router-dom";
 import { Buscar_User } from '../../../Redux/actions';
 
 const LoginUser = ({ setView }) => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [keyVisible, setKeyVisible] = useState(true);
@@ -25,12 +27,13 @@ const LoginUser = ({ setView }) => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleEnviarUser = (event) => {
+   
     // Aquí podrías agregar la lógica para enviar los datos de inicio de sesión al servidor
     console.log('Usuario:', username);
     console.log('Contraseña:', password);
     dispatch(Buscar_User(username, password))
+    navigate('/home')
   };
 
   return (
@@ -69,7 +72,7 @@ const LoginUser = ({ setView }) => {
         </div>
       </div>
       <div onClick={() => setView("recuperarkey")} className='btn-Link espacios'>Olvidaste la contraseña</div>
-      <div onClick={handleSubmit} className='btn-Enviar'>Iniciar sesión</div>
+      <div onClick={handleEnviarUser} className='btn-Enviar'>Iniciar sesión</div>
       <div onClick={() => setView("registro")} className='btn-Link espacios'>Registrar Usuario</div>
       <div onClick={() => setView("registroEm")} className='btn-Link espacios'>Registrar Zapateria</div>
     </div>
