@@ -67,6 +67,7 @@ const LoginUser = ({ setView }) => {
       <div onClick={() => setView("recuperarkey")} className='btn-Link espacios'>Olvidaste la contraseña</div>
       <div onClick={handleSubmit} className='btn-Enviar'>Iniciar sesión</div>
       <div onClick={() => setView("registro")} className='btn-Link espacios'>Registrar Usuario</div>
+      <div onClick={() => setView("registroEm")} className='btn-Link espacios'>Registrar Zapateria</div>
     </div>
   );
 };
