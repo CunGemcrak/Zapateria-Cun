@@ -1,9 +1,7 @@
 const { DataTypes } = require('sequelize');
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
+
 module.exports = (sequelize) => {
-  // defino el modelo
-  sequelize.define('Tienda', {
+  sequelize.define('Empresa', {
     id : {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -16,10 +14,12 @@ module.exports = (sequelize) => {
     Descripcion: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: '',
     },
     celular: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: '',
     },
     correo: {
       type: DataTypes.STRING,
@@ -33,7 +33,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    status:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 'False', // Valor por defecto para el campo status
+    },
   }, { timestamps: false });
-
 };
-

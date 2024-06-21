@@ -21,8 +21,20 @@ const BusquedaUsuario = async (req, res) => {
         });
 
         if (data) {
-            console.log('Usuario encontrado:', data);
-            return res.status(200).json({ data});
+           
+            const dataValues = data.dataValues
+            const datos = {
+                id:dataValues.id,
+                name:dataValues.name,
+                apell:dataValues.apell,
+                celular:dataValues.celular,
+                email: dataValues.email,
+                url: dataValues.url,
+                state: dataValues.state
+
+            }
+            console.log('Usuario encontrado:', datos);
+            return res.status(200).json({ datos});
         } else {
             console.log('Usuario no encontrado');
             return res.status(404).json({ message: 'Usuario no encontrado' });

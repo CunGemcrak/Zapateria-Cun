@@ -1,19 +1,21 @@
 import './Login_User.css'
-import React, { useState } from 'react';
-// Importamos los íconos de ojo abierto y cerrado
+import React, { useState, useEffect } from 'react';
 import icono_key from './img/iconos/contrasena.png'
 import icono_ocultar from './img/iconos/cerrar-ojo-black.png'
 import icono_ver from './img/iconos/ojo-con-pestanas-black.png'
-import {useDispatch} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom";
-import { Buscar_User } from '../../../Redux/actions';
+import { Buscar_User } from "../../../Redux/Actions/Usuario/Action-user"
+import { Buscar_Empresa } from '../../../Redux/Actions/Empresa/Actions-Empresa';
 
 const LoginUser = ({ setView }) => {
+  const User = useSelector((state)=>state.USER)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [keyVisible, setKeyVisible] = useState(true);
+  const [tipeuser, setTipeUser] = useState("usuario")
 
   const handleKey = () => {
     setKeyVisible(!keyVisible);
@@ -27,19 +29,59 @@ const LoginUser = ({ setView }) => {
     setPassword(event.target.value);
   };
 
+  const handleTipoUsuarioChange = (event) => {
+    setTipeUser(event.target.value);
+   // alert(event.target.value)
+  };
+  useEffect(() => {
+    if (!User) {
+      navigate('/home');
+    }
+  }, [navigate, User]);
+
   const handleEnviarUser = (event) => {
-   
-    // Aquí podrías agregar la lógica para enviar los datos de inicio de sesión al servidor
     console.log('Usuario:', username);
     console.log('Contraseña:', password);
-    dispatch(Buscar_User(username, password))
-    navigate('/home')
+    console.log('Tipo de usuario:', tipeuser);
+    if(tipeuser ==="usuario"){
+      dispatch(Buscar_User(username, password))
+
+      navigate('/home')
+    }else
+    if(tipeuser === "tienda"){
+      dispatch(Buscar_Empresa(username, password))
+      //navigate('/tienda')
+    }else{
+      alert("Debes seleccionar un usuario")
+    }
+    
+    
   };
 
   return (
     <div className="body-Login">
       <div>
         <h1 className='Titulos'>Ingresar</h1>
+        <div className="input-group-checked">
+          <label>
+            <input
+              type="radio"
+              name="tipoUsuario"
+              value="usuario"
+              checked={tipeuser === "usuario"}
+              onChange={handleTipoUsuarioChange}
+            /> Usuario
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="tipoUsuario"
+              value="tienda"
+              checked={tipeuser === "tienda"}
+              onChange={handleTipoUsuarioChange}
+            /> Tienda
+          </label>
+        </div>
         <div className='Login-container-input'>
           <div className="input-group">
             <input
@@ -51,7 +93,6 @@ const LoginUser = ({ setView }) => {
               placeholder="Celular/Correo"
             />
           </div>
-
           <div className="input-group">
             <img src={icono_key} alt="icono ingreso" />
             <input
@@ -66,7 +107,7 @@ const LoginUser = ({ setView }) => {
               src={keyVisible ? icono_ocultar : icono_ver}
               alt="Mostrar/Ocultar"
               onClick={handleKey}
-              className="toggle-icon"  // Añadido
+              className="toggle-icon"  
             />
           </div>
         </div>

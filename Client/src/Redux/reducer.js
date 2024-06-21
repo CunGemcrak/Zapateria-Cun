@@ -1,7 +1,8 @@
-import { BUSCARUSUARIO } from "./action-types";
+import { BUSCARUSUARIO } from './Action-Tipes-js/actions-type-usuario'
+import { BUSCAREMPRESA } from "./Action-Tipes-js/actions-type-empresa";
 
 const initialState = {
-    USER: null,
+    USER: {state: 'false'}
 
 }
 
@@ -12,6 +13,10 @@ const reducer = (state= initialState, {type, payload})=>{
             return{
                 ...state, USER:payload
             }
+            case BUSCAREMPRESA:
+                return{
+                    ...state, USER:payload
+                }
        
             default:
                 return {...state}

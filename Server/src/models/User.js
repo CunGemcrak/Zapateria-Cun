@@ -28,9 +28,15 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    tipe: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: '1',
+    },
     state: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: 'true',
     },
   }, { timestamps: false });
 
