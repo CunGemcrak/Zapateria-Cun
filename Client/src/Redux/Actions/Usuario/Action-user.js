@@ -1,4 +1,4 @@
-import { BUSCARUSUARIO }from'../../Action-Tipes-js/actions-type-usuario'
+import { BUSCARUSUARIO, SALIRCUENTAUSUARIO }from'../../Action-Tipes-js/actions-type-usuario'
 import axios from 'axios'
 
 
@@ -24,5 +24,17 @@ export const Buscar_User = (correo, pass) => {
             console.log("Error al enviar la información", error.message);
         }
     };
+
+}
+
+//!Cerrar la cuenta
+export const Salir_Usuario = ()=>{
+    return async(dispatch)  =>{
+       
+        dispatch({
+            type: SALIRCUENTAUSUARIO,
+            payload: "false"
+        })
+    }
 
 }

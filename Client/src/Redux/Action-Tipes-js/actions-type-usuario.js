@@ -1,1 +1,2 @@
 export const BUSCARUSUARIO = "BUSCARUSUARIO" //Buscamos usuario
+export const SALIRCUENTAUSUARIO = "SALIRCUENTAUSUARIO"

@@ -3,11 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { FaSearch, FaUser, FaShoppingCart, FaSignOutAlt } from 'react-icons/fa';
 import './NavMenu.css';
 import iconEstiloZap from '../loading/img/download.gif';
+import { useDispatch } from "react-redux";
+
+import {Salir_Usuario} from '../../Redux/Actions/Usuario/Action-user'
 
 const NavMenu = () => {
   const [showSubMenu, setShowSubMenu] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigator =  useNavigate()
+  const dispatch = useDispatch();
 
   const handleMenuUserEnter = () => {
     
@@ -21,6 +25,9 @@ const NavMenu = () => {
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
   };
+  const hondleSalir =()=>{
+    dispatch(Salir_Usuario())
+  }
 
   return (
     <nav className="navbar">
@@ -64,7 +71,7 @@ const NavMenu = () => {
         </div>
         <div className="nav-item">
           <button className="logout-button">
-            <FaSignOutAlt className="icon" />
+            <FaSignOutAlt className="icon" onClick={hondleSalir} />
           </button>
         </div>
       </div>

@@ -34,7 +34,7 @@ const LoginUser = ({ setView }) => {
    // alert(event.target.value)
   };
   useEffect(() => {
-    if (!User) {
+    if (!User || User.state === "true") {
       navigate('/home');
     }
   }, [navigate, User]);
@@ -45,7 +45,6 @@ const LoginUser = ({ setView }) => {
     console.log('Tipo de usuario:', tipeuser);
     if(tipeuser ==="usuario"){
       dispatch(Buscar_User(username, password))
-
       navigate('/home')
     }else
     if(tipeuser === "tienda"){
