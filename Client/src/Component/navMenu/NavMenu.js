@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaSearch, FaUser, FaShoppingCart, FaSignOutAlt } from 'react-icons/fa';
+import { FaSearch, FaUser, FaShoppingCart, FaSignOutAlt, FaHome  } from 'react-icons/fa';
 import './NavMenu.css';
 import iconEstiloZap from '../loading/img/download.gif';
 import { useDispatch } from "react-redux";
@@ -13,22 +13,19 @@ const NavMenu = () => {
   const navigator =  useNavigate()
   const dispatch = useDispatch();
 
-  const handleMenuUserEnter = () => {
-    
-    if(menuOpen){
-      navigator('/perfiluser')
-    }else{
-      setShowSubMenu(!showSubMenu);
-    }
-  };
-
+ 
+  const handlePerfil = () =>{
+    navigator('/perfiluser')
+  }
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
   };
   const hondleSalir =()=>{
     dispatch(Salir_Usuario())
   }
-
+const Hondlehome = () =>{
+  navigator('/home')
+}
   return (
     <nav className="navbar">
       <div className="icon-zap">
@@ -49,7 +46,13 @@ const NavMenu = () => {
           </div>
         </div>
         <div className="nav-item">
-          <div className="nav-link" onClick={handleMenuUserEnter}>
+          <button className="logout-button">
+            <FaHome className="icon" onClick={Hondlehome} />
+          </button>
+           
+        </div>
+        <div className="nav-item" >
+          <div className="nav-link" onClick={handlePerfil} >
             <FaUser className="icon" />
           </div>
           {
@@ -64,6 +67,7 @@ const NavMenu = () => {
           :null
         }
         </div>
+        
         <div className="nav-item">
           <div className="nav-link">
             <FaShoppingCart className="icon" />
@@ -73,6 +77,7 @@ const NavMenu = () => {
           <button className="logout-button">
             <FaSignOutAlt className="icon" onClick={hondleSalir} />
           </button>
+          FaHome 
         </div>
       </div>
     </nav>
