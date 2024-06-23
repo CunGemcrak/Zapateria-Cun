@@ -6,6 +6,16 @@ const NavFilter = () => {
     <div className="navfilter-container">
      
       <div className="navfilter-section">
+      <h2 className="navfilter-subtitle-titulo">Filtros</h2>
+      <h4 className="navfilter-subtitle">Tipo</h4>
+        <div className="navfilter-option">
+          <input type="checkbox" id="sneakers" name="category" />
+          <label htmlFor="sneakers">Caballero</label>
+        </div>
+        <div className="navfilter-option">
+          <input type="checkbox" id="boots" name="category" />
+          <label htmlFor="boots">Dama</label>
+        </div>
         <h4 className="navfilter-subtitle">Categoría</h4>
         <div className="navfilter-option">
           <input type="checkbox" id="sneakers" name="category" />

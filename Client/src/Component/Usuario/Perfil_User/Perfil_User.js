@@ -3,6 +3,7 @@ import "./Perfil_user.css"
 
 const PerfilUser =()=>{
     return <>
+
         <body>
       <from>
         <h2>PERFIL USUARIO</h2>
@@ -35,6 +36,7 @@ const PerfilUser =()=>{
 
       </from>
     </body>
+
 
     </>
 }

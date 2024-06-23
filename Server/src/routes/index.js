@@ -1,26 +1,20 @@
 const { Router } = require('express');
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
 
-
-// import metodos controles een un solo documento 
-//const {allDogs, dog, dogName, Temperamento} = require('../controllers/metodosGet')
-/*const {busquedaDog} = require('../controllers/metodosPost')
-const {allDogs}= require('../controllers/metodo_Alldogs')
-const {dog}= require('../controllers/metodo_IDdog')
-const {dogName}= require('../controllers/metodo_NameDog')
-const {Temperamento}= require('../controllers/metodo_Temperament')*/
-
-
-
-//import de los moduloes o controler por separado
-
+//!importamos controllers  para almacenar inforamcion
+const {CrearUsuario} = require('../controllers/Usuario/Post/Crear_Usuario')
+const {BusquedaUsuario} = require('../controllers/Usuario/Get/Data_Usuario');
+const { CrearEmpresa } = require('../controllers/Usuario/Post/Crear_Empresa');
 
 const router = Router();
 
+//!MEtodos Usuario 
+router.post('/user/create', CrearUsuario)
+router.get('/user/:correo/:pass', BusquedaUsuario);
+
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-
+//!MEtodos Empresa 
+router.post('/crear/empresa', CrearEmpresa)
 
 /*
 router.get('/dogs', allDogs);

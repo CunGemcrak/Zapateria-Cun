@@ -1,22 +1,28 @@
-import { REGISTRAR,VERIFICAR } from "./action-types";
+import { BUSCARUSUARIO, SALIRCUENTAUSUARIO } from './Action-Tipes-js/actions-type-usuario'
+import { BUSCAREMPRESA } from "./Action-Tipes-js/actions-type-empresa";
 
 const initialState = {
-    Registrado: null,
-    copydogs:[],
-    temperamento:[]
+    USER: {state: 'false'}
+
 }
 
 const reducer = (state= initialState, {type, payload})=>{
    // console.log("entro al reducer la informacion" + payload);
     switch( type ){
-        case REGISTRAR:
+        case BUSCARUSUARIO:
             return{
-                ...state, Registrado:payload
+                ...state, USER:payload
             }
-        case VERIFICAR:
-            return{
-                ...state, Registrado:payload
-            } 
+            case BUSCAREMPRESA:
+                return{
+                    ...state, USER:payload
+                }
+            case SALIRCUENTAUSUARIO:
+                return{
+                    ...state,
+                    USER:payload
+                }
+       
             default:
                 return {...state}
         }

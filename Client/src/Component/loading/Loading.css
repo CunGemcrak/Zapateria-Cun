@@ -1,39 +1,32 @@
-.body_loading{
-    background-color: rgb(0, 0, 0);
-        inline-size: 100vh; 
-        display: block;
-        color: white;
-        inline-size: 100vw;
-        block-size: 100vh;
-        display: flex;
-        flex-direction: column; /* Cambiado para alinear los elementos en columna */
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-        overflow-y:hidden; /* Permitir desplazamiento, pero ocultar la barra */
-   
-        
-    
-    }
+.body_loading {
+  position: fixed; /* Fijar la posición en la pantalla */
+  top: 0;
+  left: 0;
+  inline-size: 100vw; /* Ocupa todo el ancho de la pantalla */
+  block-size: 100vh; /* Ocupa todo el alto de la pantalla */
+  background-color: rgba(0, 0, 139, 0.5); /* Fondo negro azulado con transparencia */
+  display: none; /* Ocultar por defecto */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  z-index: 1000; /* Colocar delante de todo el contenido */
+}
+
+.body_loading.visible {
+  display: flex; /* Mostrar cuando tiene la clase 'visible' */
+}
+
+.img-loading-carga {
+  inline-size: 400px; /* Tamaño de la imagen */
+  block-size: 400px;
+  border-radius: 50%; /* Hacer la imagen redonda */
+  object-fit: cover; /* Asegurar que la imagen se ajuste bien dentro del borde redondeado */
+}
+
+  
+  .mg-loading-carga-img {
+    width: 300px;
+    border-radius: 100%;
+  }
 
 
-
-
-    .Atleticos_Loading{
-        inline-size: 300px;
-        padding: 0;
-        margin: 0;
-        
-        
-    }
-    .cargando {
-        margin-block-start: 60px;
-        inline-size: 100px;
-      
-    }
-
-    .img-loading-carga{
-       /*   border: red 2px groove;
-      border-radius: 100%;*/
-      overflow-y:hidden;  
-    }
+  
