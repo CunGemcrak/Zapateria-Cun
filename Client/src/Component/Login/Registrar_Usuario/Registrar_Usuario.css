@@ -1,0 +1,42 @@
+.btn-Enviar {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 40px;
+    background: linear-gradient(283deg, #ff2426, #ff9259);
+    width: 350px;
+    color: white;
+    border: 2px solid black;
+    padding: 5px 10px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    font-weight: bolder;
+    text-align: center;
+  }
+  
+  .btn-Enviar:hover {
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .btn-Enviar::after {
+    content: "";
+    background: #030303;
+    position: absolute;
+    z-index: -1;
+    padding: 5px 10px;
+    display: block;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transform: scale(0, 0);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-Enviar:hover::after {
+    transition: all 0.3s ease-out;
+    transform: scale(1, 1);
+  }

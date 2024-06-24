@@ -1,7 +1,13 @@
 import './Registrar_Usuario.css'
 import React, { useState } from 'react';
+
+
+import {GuardrUsuario } from '../../../Redux/Actions/Usuario/Action-user'
+import { useDispatch } from 'react-redux';
+
  
 const RegistrarUduario = ({setView}) => {
+  const dispatch = useDispatch()
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -15,10 +21,13 @@ const RegistrarUduario = ({setView}) => {
     
       const handleSubmit = (e) => {
         e.preventDefault();
-        // Aquí podrías agregar la lógica para enviar los datos del formulario a tu backend o manejar el registro de usuario.
-        console.log(formData); // Ejemplo: imprimir datos en consola
-        // Aquí podrías hacer una llamada a tu API para registrar al usuario
+         console.log(formData); 
+     
       };
+
+      const HandleGuardar = () =>{
+        dispatch(GuardrUsuario(formData))
+      }
     
       return (
         <div>
@@ -64,7 +73,7 @@ const RegistrarUduario = ({setView}) => {
               />
             </label>
             <br />
-            <button type="submit">Registrarse</button>
+            <div onClick={HandleGuardar} className='btn-Enviar'>Registrarse</div>
           </form>
         </div>
       );
