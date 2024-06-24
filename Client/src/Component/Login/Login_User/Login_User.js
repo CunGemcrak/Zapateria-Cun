@@ -10,6 +10,8 @@ import { Buscar_Empresa } from '../../../Redux/Actions/Empresa/Actions-Empresa';
 
 const LoginUser = ({ setView }) => {
   const User = useSelector((state)=>state.USER)
+  const Emrpesa = useSelector((state)=>state.EMPRESA)
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [username, setUsername] = useState('');
@@ -37,7 +39,13 @@ const LoginUser = ({ setView }) => {
     if (!User || User.state === "true") {
       navigate('/home');
     }
-  }, [navigate, User]);
+    
+    if(!Emrpesa || Emrpesa.state === "true")
+      {
+        navigate('/company');
+      }
+
+  }, [navigate, User, Emrpesa]);
 
   const handleEnviarUser = (event) => {
     console.log('Usuario:', username);
@@ -48,8 +56,9 @@ const LoginUser = ({ setView }) => {
       navigate('/home')
     }else
     if(tipeuser === "tienda"){
+      
       dispatch(Buscar_Empresa(username, password))
-      //navigate('/tienda')
+      navigate('/company');
     }else{
       alert("Debes seleccionar un usuario")
     }

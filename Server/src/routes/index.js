@@ -3,6 +3,7 @@ const { Router } = require('express');
 //!importamos controllers  para almacenar inforamcion
 const {CrearUsuario} = require('../controllers/Usuario/Post/Crear_Usuario')
 const {BusquedaUsuario} = require('../controllers/Usuario/Get/Data_Usuario');
+const {DataTiendaUsuario} = require('../controllers/Tienda/Get/Data_Tienda');
 const { CrearEmpresa } = require('../controllers/Usuario/Post/Crear_Empresa');
 
 const router = Router();
@@ -15,6 +16,8 @@ router.get('/user/:correo/:pass', BusquedaUsuario);
 // Ejemplo: router.use('/auth', authRouter);
 //!MEtodos Empresa 
 router.post('/crear/empresa', CrearEmpresa)
+
+router.get('/empresa/:correo/:pass', DataTiendaUsuario);
 
 /*
 router.get('/dogs', allDogs);

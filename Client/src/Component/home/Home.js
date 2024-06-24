@@ -29,18 +29,19 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      hola
       {
               loading
               ?<Loading/>
               :null
             }
-      <NavMenu className="nav-menu" />
-      <div className="home-body">
-        <NavFilter className="nav-filter" />
-        <div className="content-cards">
-          {/* Aquí iría el contenido principal de la página */}
-          <ZapatosCard />
-         
+                <NavMenu className="nav-menu" />
+                <div className="home-body">
+                  <NavFilter className="nav-filter" />
+                  <div className="content-cards">
+                    {/* Aquí iría el contenido principal de la página */}
+                    <ZapatosCard />
+                  
         </div>
       </div>
     </div>

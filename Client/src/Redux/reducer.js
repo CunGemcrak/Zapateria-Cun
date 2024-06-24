@@ -3,7 +3,7 @@ import { BUSCAREMPRESA } from "./Action-Tipes-js/actions-type-empresa";
 
 const initialState = {
     USER: {state: 'false'},
-    Zapato: null,
+    EMPRESA: {status: 'false'},
     Filtros:null
 
 }
@@ -17,7 +17,7 @@ const reducer = (state= initialState, {type, payload})=>{
             }
             case BUSCAREMPRESA:
                 return{
-                    ...state, USER:payload
+                    ...state, EMPRESA:payload
                 }
             case SALIRCUENTAUSUARIO:
                 return{

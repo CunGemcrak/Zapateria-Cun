@@ -16,7 +16,7 @@ const CrearUsuario = async (req, res) => {
 
     if (consultaUser) {
       console.log('El Usuario ya existe');
-      return res.status(400).json({ message: 'El usuario ya existe' });
+      return res.status(201).json({ message: 'El usuario ya esta registrado' });
     } else {
       console.log('Se puede almacenar');
 
@@ -38,7 +38,7 @@ const CrearUsuario = async (req, res) => {
         console.log('Datos guardados correctamente');
         return res.status(200).json({ state: 'true' });
       } else {
-        return res.status(400).json({ message: 'No se puede almacenar usuario' });
+        return res.status(201).json({mensaje: 'No se puede almacenar usuario' });
       }
     }
   } catch (error) {

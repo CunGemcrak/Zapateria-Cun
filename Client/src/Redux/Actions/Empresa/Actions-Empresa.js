@@ -29,18 +29,22 @@ export const Registrar_Empresa = (userData) => {
 };
 
 //! Login empresa
-export const Buscar_Empresa = async (correo, pass)=>{
+
+
+
+export const Buscar_Empresa = (correo, pass)=>{
   return async (dispatch) => {
+   // alert("Entro al metodo" + correo +" pass : " +pass )
     try {
-        const endpoint = `http://localhost:3001/user/${correo}/${pass}`; // Usamos los datos en la URL como parámetros de ruta
+        const endpoint = `http://localhost:3001/empresa/${correo}/${pass}`; // Usamos los datos en la URL como parámetros de ruta
         const response = await axios.get(endpoint);
         const userData = response.data;
-        const  user = userData.data
+      //  const  user = userData.data
 
-        console.log("Mensaje de respuesta: " + JSON.stringify(user));
+        console.log("Mensaje de respuesta: " + JSON.stringify(userData));
         dispatch({
             type: BUSCAREMPRESA,
-            payload: user,
+            payload: userData.usuario,
         });
   
     } catch (error) {
