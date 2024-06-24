@@ -12,8 +12,8 @@ module.exports = (sequelize) => {
     },
     celular: {
       type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
+      allowNull: true,
+      
     },
     email: {
       type: DataTypes.STRING,
@@ -26,7 +26,7 @@ module.exports = (sequelize) => {
     },
     url: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     tipe: {
       type: DataTypes.STRING,
