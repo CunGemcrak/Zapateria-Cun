@@ -1,10 +1,29 @@
+.body-olvide-contrasena {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200;
+    border: 2px red solid;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
 
-.btn-regresar{
+    .label {
+    font-family: Arial, sans-serif;
+    align-items: center;
+    text-align: center;
+    }
+    
+
+
+.btn-enviar{
     cursor: pointer;
     background-color: red;
     border: solid 2px groove;
     border-radius: 10px;
-    font-weight: 600;
+    font-weight: 100;
     color: white;
     margin: 20px;
     text-align: center;
@@ -16,7 +35,19 @@
    
 }
 
-.btn-regresar:hover{
-background-color: green;
-border-bottom: 2px;
+
+.btn-regresar{
+    cursor: pointer;
+    position: relative;
+    margin: 10px;
+    padding: 2px;
+    margin-top: 20px;
+    color: rgb(34, 65, 126);
+    font-weight: bold;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    align-items: center;
+    text-align: center;
 }

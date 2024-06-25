@@ -80,7 +80,6 @@ const RegistrarEmpresa = ({ setView }) => {
   return (
     <div className="body-Empresa-register">
       <h1 className="Titulos">Registrar Empresa</h1>
-
       <div className="Register-container-input">
         <div className="input-group-empresa">
           <img src={imgUsuario} alt="Nombre Usuario" />

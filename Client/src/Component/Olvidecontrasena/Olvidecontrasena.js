@@ -8,9 +8,11 @@ const OlvideContrasena = ({setView}) => {
  
 
   return (
-    <div>
-      <h2>¿Olvidaste tu contraseña?</h2>
-      <div >
+    
+    <div className="body-olvide-contrasena">
+      <h1 className="Titulos">¿Olvidaste tu contraseña?</h1>
+          
+      <div className='label'>
         <label>
           Ingresa tu correo electrónico:
           <input
@@ -20,10 +22,13 @@ const OlvideContrasena = ({setView}) => {
             required
           />
         </label>
-        <button type="submit">Enviar</button>
+        
+        <div onClick={() => setView("login")}className="btn-Enviar">Enviar</div>
         <div onClick={()=>{setView('login')}} className='btn-regresar'>Regresar</div>
       </div>
+    
     </div>
+    
   );
 };
 
