@@ -7,6 +7,7 @@ import CompanyMenu from "../Company_Menu/CompanyMenu";
 import CompanyDatos from "../Company_Datos/CompanyDatos";
 //import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+
 //import NavFilter from "../../navFilter/navFilter";
 //import ZapatosCard from "../../Cards/Zapatos_card/Zapatos_Card";
 
@@ -33,6 +34,7 @@ const CompanyHome = () => {
         <div className="content-cards">
           {/* Aquí iría el contenido principal de la página */}
           <CompanyDatos/>
+      
         </div>
       </div>
     </div>
