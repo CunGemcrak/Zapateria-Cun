@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 import Loading from '../../loading/Loading';
 import './CompanyZapatos.css';
 import CompanyMenu from '../Company_Menu/CompanyMenu';
 
 const CompanyZapatos = () => {
     const [loading, setLoading] = useState(true);
-    const Empresa = useSelector((state) => state.EMPRESA);
+   // const Empresa = useSelector((state) => state.EMPRESA);
     
     const [formData, setFormData] = useState({
         color: '',
