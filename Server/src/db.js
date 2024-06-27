@@ -41,7 +41,7 @@ sequelize.sync({ alter: false })
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { User, Zapatos, Color, Empresa, Talla, Venta, Calidad } = sequelize.models;
+const { User, Zapatos, Color, Empresa, Talla, Venta, Calidad, Marca } = sequelize.models;
 //!RElacion de zapatos con color es de muchos a muchos
 const Zapatos_Color = sequelize.define('Zapatos_Color', {}, { timestamps: false })
 Zapatos.belongsToMany(Color, { through: 'Zapatos_Color' })
@@ -63,6 +63,6 @@ Venta.belongsToMany(User, { through: 'User_Venta' })
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
- User, Zapatos, Color, Empresa, Talla, Venta, Calidad, Zapatos_Color, Zapatos_Talla, User_Venta,
+ User, Zapatos, Marca, Color, Empresa, Talla, Venta, Calidad, Zapatos_Color, Zapatos_Talla, User_Venta,
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
 };

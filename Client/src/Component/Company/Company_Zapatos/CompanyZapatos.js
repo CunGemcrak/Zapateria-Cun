@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
-//import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 import Loading from '../../loading/Loading';
 import './CompanyZapatos.css';
 import CompanyMenu from '../Company_Menu/CompanyMenu';
 
 const CompanyZapatos = () => {
     const [loading, setLoading] = useState(true);
-   // const Empresa = useSelector((state) => state.EMPRESA);
+    const colores = useSelector((state) => state.COLORES);
+    const Empresa = useSelector((state) => state.EMPRESA);
+    const talla = useSelector((state) => state.TALLAS);
+    const marca = useSelector((state) => state.MARCAS);
     
+
     const [formData, setFormData] = useState({
         color: '',
         talla: '',
@@ -15,21 +19,22 @@ const CompanyZapatos = () => {
         marca: '',
         modelo: '',
         descripcion: '',
-        calidad: '', // Nuevo campo calidad
-        url: '' // Nuevo campo para la URL de la imagen
+        calidad: '',
+        url: ''
     });
 
     useEffect(() => {
         const timer = setTimeout(() => {
-          setLoading(false);
+            setLoading(false);
         }, 3000);
-    
+
         return () => clearTimeout(timer);
-      }, []);
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        alert(value)
     };
 
     const handleFileChange = (e) => {
@@ -55,24 +60,36 @@ const CompanyZapatos = () => {
             <CompanyMenu className="nav-menu" />
             <div className="body-zapatos">
                 <h2>Crear Nuevo Zapato</h2>
-                <div className="form-zapatos" onSubmit={handleSubmit}>
+                <form className="form-zapatos" onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label>Color:</label>
-                        <input 
-                            type="text" 
+                        <select 
                             name="color" 
                             value={formData.color} 
-                            onChange={handleChange} 
-                        />
+                            onChange={handleChange}
+                        >
+                            <option value="">Seleccione un color</option>
+                            {colores.map((color) => (
+                                <option key={color.id} value={color.color}>
+                                    {color.color}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                     <div className="form-group">
                         <label>Talla:</label>
-                        <input 
-                            type="text" 
-                            name="talla" 
-                            value={formData.talla} 
-                            onChange={handleChange} 
-                        />
+                        <select 
+                            name="color" 
+                            value={formData.color} 
+                            onChange={handleChange}
+                        >
+                            <option value="">Seleccione un color</option>
+                            {talla.map((talla) => (
+                                <option key={talla.id} value={talla.talla}>
+                                    {talla.talla}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                     <div className="form-group">
                         <label>Costo:</label>
@@ -85,12 +102,18 @@ const CompanyZapatos = () => {
                     </div>
                     <div className="form-group">
                         <label>Marca:</label>
-                        <input 
-                            type="text" 
+                        <select 
                             name="marca" 
                             value={formData.marca} 
-                            onChange={handleChange} 
-                        />
+                            onChange={handleChange}
+                        >
+                            <option value="">Seleccione un marca</option>
+                            {  marca.map((marcas) => (
+                                <option key={marcas.id} value={marcas.marca}>
+                                    {marcas.marca}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                     <div className="form-group">
                         <label>Modelo:</label>
@@ -138,7 +161,7 @@ const CompanyZapatos = () => {
                         </div>
                     )}
                     <button type="submit">Guardar Zapato</button>
-                </div>
+                </form>
             </div>
         </div>
     );
