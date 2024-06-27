@@ -1,10 +1,16 @@
 import { BUSCARUSUARIO, SALIRCUENTAUSUARIO, GUARDARUSUARIO } from './Action-Tipes-js/actions-type-usuario'
-import { BUSCAREMPRESA } from "./Action-Tipes-js/actions-type-empresa";
+import { BUSCAREMPRESA, 
+    BUSCARCOLORES, //!colores 
+    BUSCARTALLA, //! Tallas
+    BUSCARMARCA,//!Marcas
+} from "./Action-Tipes-js/actions-type-empresa";
 
 const initialState = {
     USER: {state: 'false'},
     EMPRESA: {status: 'false'},
-    Filtros:null
+    COLORES:null,
+    TALLAS:null,
+    MARCAS:null
 
 }
 
@@ -28,6 +34,20 @@ const reducer = (state= initialState, {type, payload})=>{
                     return{
                         ...state, USER:payload
                     }
+
+                    //! Emrpesa
+                case BUSCARCOLORES:
+                    return{
+                        ...state, COLORES:payload
+                    } 
+                case BUSCARTALLA: 
+                return{
+                    ...state, TALLAS:payload
+                } 
+                case BUSCARMARCA:
+                    return{
+                        ...state, MARCAS:payload
+                    }  
        
             default:
                 return {...state}

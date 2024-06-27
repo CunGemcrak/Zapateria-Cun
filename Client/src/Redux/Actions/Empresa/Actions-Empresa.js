@@ -1,5 +1,9 @@
 import axios from "axios";
-import { BUSCAREMPRESA } from "../../Action-Tipes-js/actions-type-empresa";
+import { BUSCAREMPRESA,
+  BUSCARCOLORES,//! buscamos colores
+  BUSCARTALLA,//! buscamos tallas
+  BUSCARMARCA,//! Buscamos Marcas
+ } from "../../Action-Tipes-js/actions-type-empresa";
 
 export const Registrar_Empresa = (userData) => {
   return async (dispatch) => {
@@ -51,4 +55,70 @@ export const Buscar_Empresa = (correo, pass)=>{
         console.log("Error al enviar la información", error.message);
     }
 };
+}
+
+
+
+//!Buscamos espacio apra manipular colores 
+export const Busqueda_Color = ()=>{
+  return async (dispatch) => {
+    // alert("Entro al metodo" + correo +" pass : " +pass )
+     try {
+         const endpoint = `http://localhost:3001/empresa/color/`; // Usamos los datos en la URL como parámetros de ruta
+         const response = await axios.get(endpoint);
+         const userData = response.data;
+       //  const  user = userData.data
+ 
+         console.log("Mensaje de respuesta: " + JSON.stringify(userData));
+         dispatch({
+             type: BUSCARCOLORES,
+             payload: userData.colores,
+         });
+   
+     } catch (error) {
+         console.log("Error al enviar la información", error.message);
+     }
+ };
+}
+
+export const Busqueda_Tallas = ()=>{
+  return async (dispatch) => {
+    // alert("Entro al metodo" + correo +" pass : " +pass )
+     try {
+         const endpoint = `http://localhost:3001/empresa/tallas/`; // Usamos los datos en la URL como parámetros de ruta
+         const response = await axios.get(endpoint);
+         const userData = response.data;
+       //  const  user = userData.data
+ 
+         console.log("Mensaje de respuesta: " + JSON.stringify(userData));
+         dispatch({
+             type: BUSCARTALLA,
+             payload: userData.tallas,
+         });
+   
+     } catch (error) {
+         console.log("Error al enviar la información", error.message);
+     }
+ };
+}
+
+export const Busqueda_Marca =() =>{
+  return async (dispatch) => {
+    // alert("Entro al metodo" + correo +" pass : " +pass )
+     try {
+         const endpoint = `http://localhost:3001/empresa/marcas`; // Usamos los datos en la URL como parámetros de ruta
+         const response = await axios.get(endpoint);
+         const userData = response.data;
+       //  const  user = userData.data
+ 
+         console.log("Mensaje de respuesta: " + JSON.stringify(userData));
+         dispatch({
+             type: BUSCARMARCA,
+             payload: userData.marcas,
+         });
+   
+     } catch (error) {
+         console.log("Error al enviar la información", error.message);
+     }
+ };
 }

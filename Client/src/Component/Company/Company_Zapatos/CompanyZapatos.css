@@ -59,7 +59,12 @@
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
+.form-group-selected {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  color:black
+}
 .form-group {
   margin-bottom: 15px;
   display: flex;
