@@ -24,6 +24,10 @@ const handleZapatos = () =>{
   navigator('/company/zapatos')
 }
 
+const handleVenta =()=>{
+  navigator('/company/ventas')
+}
+
   return (
     <nav className="navbar">
       <div className="icon-zap">
@@ -52,7 +56,7 @@ const handleZapatos = () =>{
         </div>
 
         <div className="nav-item">
-          <div className="nav-link" onClick={handlePerfil}>
+          <div className="nav-link" onClick={handleVenta}>
             <FaCheckCircle className="icon" />
             <span className="icon-label">ventras</span>
           </div>

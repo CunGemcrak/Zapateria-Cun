@@ -15,7 +15,8 @@ const CompanyZapatos = () => {
         marca: '',
         modelo: '',
         descripcion: '',
-        calidad: '' // Nuevo campo calidad
+        calidad: '', // Nuevo campo calidad
+        url: '' // Nuevo campo para la URL de la imagen
     });
 
     useEffect(() => {
@@ -31,6 +32,17 @@ const CompanyZapatos = () => {
         setFormData({ ...formData, [name]: value });
     };
 
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setFormData({ ...formData, url: reader.result });
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Datos del zapato:', formData);
@@ -43,7 +55,7 @@ const CompanyZapatos = () => {
             <CompanyMenu className="nav-menu" />
             <div className="body-zapatos">
                 <h2>Crear Nuevo Zapato</h2>
-                <div className="form-zapatos" onClick={handleSubmit}>
+                <div className="form-zapatos" onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label>Color:</label>
                         <input 
@@ -111,6 +123,20 @@ const CompanyZapatos = () => {
                             onChange={handleChange} 
                         ></textarea>
                     </div>
+                    <div className="form-group">
+                        <label>Subir Imagen:</label>
+                        <input 
+                            type="file" 
+                            accept="image/*" 
+                            onChange={handleFileChange} 
+                        />
+                    </div>
+                    {formData.url && (
+                        <div className="form-group">
+                            <label>Vista Previa:</label>
+                            <img src={formData.url} alt="Vista previa" className="img-preview" />
+                        </div>
+                    )}
                     <button type="submit">Guardar Zapato</button>
                 </div>
             </div>
@@ -119,4 +145,3 @@ const CompanyZapatos = () => {
 };
 
 export default CompanyZapatos;
-

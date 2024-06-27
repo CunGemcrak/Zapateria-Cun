@@ -1,68 +1,75 @@
 .companydatos-container {
-    display: flex;
-    margin: 30px;
-   
-    justify-content: center;
-    width:95dvw;
-    height: 80vh;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .companydatos-image {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    width: 400px; /* Ajusta el tamaño de la imagen según sea necesario */
-    height: 400px;
-   padding: 20px;
-   
-    border: solid 2px red;
-    margin: 20px;
-  }
+  display: flex;
+  margin: 30px;
+  justify-content: center;
+  width: 95vw;
+  height: 80vh;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
 
-  .companydatos-image img{
-  
-        width: 400px;
-        height: 350px;
-        }
-  
-  .companydatos-info {
-   
-    padding: 30px;
-    width: 450px;
-    box-shadow: 0px 0px 10px rgba(51, 255, 0, 0.1);
-  }
-  
-  .companydatos-info h2 {
-    margin-bottom: 20px;
-  }
-  
-  .companydatos-item {
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .companydatos-item strong {
-    margin-right: 10px; /* Espacio entre el texto fuerte y el valor */
-  }
-  
-  .companydatos-actions {
-    margin-top: 20px;
-  }
-  
-  .companydatos-actions button {
-    background-color: #007bff; /* Color de fondo del botón */
-    color: white; /* Color de texto del botón */
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .companydatos-actions button:hover {
-    background-color: #0056b3; /* Cambio de color al pasar el ratón sobre el botón */
-  }
-  
+.companydatos-image {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 350px; /* Ajusta el tamaño de la imagen según sea necesario */
+  height: 300px;
+  padding: 20px;
+  border: solid 2px red;
+  margin: 20px;
+}
+
+.companydatos-image img {
+  width: 100%; /* Ajusta la imagen al contenedor */
+  height: auto; /* Ajusta la altura proporcionalmente */
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 5px;
+  object-fit: contain; /* Ajusta el tamaño de la imagen sin distorsionarla */
+}
+
+.companydatos-info {
+  padding: 30px;
+  width: 450px;
+  box-shadow: 0px 0px 10px rgba(51, 255, 0, 0.1);
+}
+
+.companydatos-info h2 {
+  margin-bottom: 20px;
+}
+
+.companydatos-item {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.companydatos-item strong {
+  margin-right: 10px; /* Espacio entre el texto fuerte y el valor */
+}
+
+.companydatos-actions {
+  margin-top: 20px;
+}
+
+.companydatos-actions button {
+  background-color: #007bff; /* Color de fondo del botón */
+  color: white; /* Color de texto del botón */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.companydatos-actions button:hover {
+  background-color: #0056b3; /* Cambio de color al pasar el ratón sobre el botón */
+}
+
+.grupo-file-img{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
