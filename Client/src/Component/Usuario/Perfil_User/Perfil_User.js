@@ -14,19 +14,19 @@ const PerfilUser =()=>{
                     
                   </div>
                   <div class="input-container">
-                    <input type='numero' name='N° documento' placeholder='N° Documento'></input>
+                    <input type='numero' name='correo' placeholder='Correo'></input>
                     
                   </div>
                   <div class="input-container">
-                    <input type='email' name='correo' placeholder='Correo'></input>
+                    <input type='email' name='celular' placeholder='Celular'></input>
                     
                   </div>
                   <div class="input-container">
-                    <input type='telefono' name='telefono' placeholder='Telefono'></input>
+                    <input type='telefono' name='direccion' placeholder='Direccion'></input>
                     
                   </div>
-                  <div class="button">
-                    <button>Editar</button>
+                  
+                  <div onClick={() => setView("login")}className="btn-editar">Editar</div>
 
                   </div>
                   
@@ -36,7 +36,7 @@ const PerfilUser =()=>{
 
 
               </div>
-    </div>
+    
 </> 
 }
 export default PerfilUser;
