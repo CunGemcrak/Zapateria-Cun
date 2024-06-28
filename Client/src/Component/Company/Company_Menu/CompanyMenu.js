@@ -9,7 +9,7 @@ const CompanyMenu = () => {
   const navigator = useNavigate();
 
   const handlePerfil = () => {
-    navigator('/perfiluser');
+    navigator('/company');
   };
 
   const handleMenuToggle = () => {
@@ -20,9 +20,13 @@ const CompanyMenu = () => {
     // dispatch(Salir_Usuario())
   };
 
-  const Hondlehome = () => {
-    navigator('/home');
-  };
+const handleZapatos = () =>{
+  navigator('/company/zapatos')
+}
+
+const handleVenta =()=>{
+  navigator('/company/ventas')
+}
 
   return (
     <nav className="navbar">
@@ -45,14 +49,14 @@ const CompanyMenu = () => {
         </div>
 
         <div className="nav-item">
-          <div className="nav-link" onClick={handlePerfil}>
+          <div className="nav-link" onClick={handleZapatos}>
             <FaPlusSquare className="icon" />
             <span className="icon-label">zapatos</span>
           </div>
         </div>
 
         <div className="nav-item">
-          <div className="nav-link" onClick={handlePerfil}>
+          <div className="nav-link" onClick={handleVenta}>
             <FaCheckCircle className="icon" />
             <span className="icon-label">ventras</span>
           </div>

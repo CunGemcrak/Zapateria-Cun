@@ -2,22 +2,25 @@ import React, { useState, useEffect } from 'react';
 import './Company.Datos.css';
 import { useSelector } from 'react-redux';
 
+import img from '../Company_img/depositphotos_59468249-stock-photo-shoes-on-the-shelf.jpg';
+
 const CompanyDatos = () => {
   const Empresa = useSelector((state) => state.EMPRESA);
 
   const initialData = {
-   
     nombre: Empresa.name,
     correo: Empresa.correo,
     celular: Empresa.celular,
     direccion: 'Calle Principal #123',
     descripcion: Empresa.Descripcion,
-    url: Empresa.url,
+    url: 'https://st2.depositphotos.com/1000333/5946/i/450/depositphotos_59468249-stock-photo-shoes-on-the-shelf.jpg',
     status: Empresa.status,
   };
 
   const [dataCompany, setDataCompany] = useState(initialData);
   const [editable, setEditable] = useState(false);
+  const [imageFile, setImageFile] = useState(null); // Estado para manejar el archivo de imagen
+  const [imagePreview, setImagePreview] = useState(initialData.url); // Estado para la vista previa de la imagen
 
   useEffect(() => {
     setDataCompany({
@@ -29,6 +32,7 @@ const CompanyDatos = () => {
       url: Empresa.url,
       status: Empresa.status,
     });
+    setImagePreview(Empresa.url || img); // Si no hay URL de la empresa, utiliza la imagen inicial
   }, [Empresa]);
 
   const handleEdit = () => {
@@ -43,6 +47,18 @@ const CompanyDatos = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDataCompany({ ...dataCompany, [name]: value });
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0]; // Obtener el primer archivo seleccionado
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImageFile(file); // Almacenar el archivo de imagen
+        setImagePreview(reader.result); // Mostrar la vista previa de la imagen
+      };
+      reader.readAsDataURL(file); // Leer el archivo como URL base64
+    }
   };
 
   return (
@@ -106,12 +122,17 @@ const CompanyDatos = () => {
           )}
         </div>
       </div>
+      <div className='grupo-file-img'>
       <div className="companydatos-image">
-        <img src={dataCompany.url} alt="Logo de la empresa" />
-        <div>Subir imagen</div>
+
+        <img src={imagePreview} alt="Logo de la empresa" />
+      
+      </div>
+      <input type="file" accept="image/*" onChange={handleImageChange} />
       </div>
     </div>
   );
 };
 
 export default CompanyDatos;
+
