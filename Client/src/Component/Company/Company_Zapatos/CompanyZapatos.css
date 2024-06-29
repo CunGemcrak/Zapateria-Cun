@@ -63,12 +63,16 @@
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
-  color:black
+  color:black;
+  width: 60px;
 }
 .form-group {
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
+  width: 100%;
+
+  justify-content: center;
 }
 
 .form-group label {
@@ -117,6 +121,33 @@ button:hover {
   object-fit: contain;
 }
 
+.btn-mas{
+  width: 30px;
+  height: 30px;
+  background: red;
+  border: 2px white groove;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.btn-mas:hover{
+  width: 30px;
+  height: 30px;
+  background: rgb(145, 255, 2);
+  border: 2px rgb(2, 172, 16) groove;
+
+}
+.grupor-flex{
+  display: flex;
+}
+
+.labels{
+  display: flex;
+}
 @media (max-width: 768px) {
   .form-zapatos {
     grid-template-columns: 1fr;

@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  sequelize.define('Empresa', {
-    id : {
+  const Empresa = sequelize.define('Empresa', {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    Descripcion: {
+    descripcion: {
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: '',
@@ -29,14 +29,30 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    url:{
+    url: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    status:{
+    status: {
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: 'False', // Valor por defecto para el campo status
     },
-  }, { timestamps: false });
+  }, { 
+    timestamps: false,
+    tableName: 'empresas' // Nombre exacto de la tabla en tu base de datos
+  });
+
+  // Sincronización y carga inicial de datos
+  Empresa.sync().then(() => {
+    return Empresa.bulkCreate([
+      { name: 'Luis', descripcion: 'Buelvas', celular: '3012282338', correo: 'admin@gmail.com', password: 'geminis', url: 'null', status: 'true' },
+      // Agrega más empresas si es necesario
+    ]);
+  }).catch(err => {
+    console.error('Error en la sincronización de Empresa:', err);
+  });
+
+  return Empresa; // Devuelve el modelo Empresa al final del archivo
 };
+

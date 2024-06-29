@@ -7,29 +7,33 @@ import './Home.css';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../loading/Loading';
+import ZapatosCards from '../Cards/Zapatos_card/Zapatos_Cards';
+//import ZapatosCards from '../Cards/Zapatos_card/Zapatos_Cards';
 
 const Home = () => {
   const User = useSelector((state) => state.USER);
+  const cards = useSelector((state) =>state.CARDS)
   const navegar = useNavigate();
   const [loading, setLoading] =useState(true)
     
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
+     // alert(JSON.stringify(User))
       
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [User]);
   useEffect(() => {
-    if (!User || User.state === "false" || User === "false") {
+    if (!User || User.state === "false") {
       navegar('/');
     }
   }, [navegar, User]);
 
   return (
     <div className="home-container">
-      hola
+   
       {
               loading
               ?<Loading/>
@@ -40,7 +44,8 @@ const Home = () => {
                   <NavFilter className="nav-filter" />
                   <div className="content-cards">
                     {/* Aquí iría el contenido principal de la página */}
-                    <ZapatosCard />
+                    <ZapatosCards/>
+                   
                   
         </div>
       </div>

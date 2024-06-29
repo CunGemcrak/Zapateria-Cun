@@ -5,6 +5,8 @@ import { BUSCAREMPRESA,
   BUSCARMARCA,//! Buscamos Marcas
  } from "../../Action-Tipes-js/actions-type-empresa";
 
+ import { setEmpresa, getEmpresa } from "../../../Component/Company/Company_Localstorang/Company_Localstorang";
+
 export const Registrar_Empresa = (userData) => {
   return async (dispatch) => {
     try {
@@ -44,7 +46,7 @@ export const Buscar_Empresa = (correo, pass)=>{
         const response = await axios.get(endpoint);
         const userData = response.data;
       //  const  user = userData.data
-
+      setEmpresa(userData.usuario)
         console.log("Mensaje de respuesta: " + JSON.stringify(userData));
         dispatch({
             type: BUSCAREMPRESA,
@@ -121,4 +123,106 @@ export const Busqueda_Marca =() =>{
          console.log("Error al enviar la información", error.message);
      }
  };
+}
+
+export const Buscueda_Calidad = ()=>{
+  return async (dispatch) => {  
+    try {
+      const endpoint = `http://localhost:3001/empresa/marcas`; // Usamos los datos en la URL como parámetros de ruta
+      const response = await axios.get(endpoint);
+      const userData = response.data;
+    //  const  user = userData.data
+
+      console.log("Mensaje de respuesta: " + JSON.stringify(userData));
+     
+     
+      dispatch({
+          type: BUSCARMARCA,
+          payload: userData.marcas,
+      });
+    } catch (error) {
+      console.log("error al buscar el usuario")
+    }
+
+  }
+}
+
+//!Validacion del localstorang
+export const Historial_Local = (color, talla, marca, tienda)=>{
+  return async (dispatch) => {
+    
+
+    dispatch({
+      type: BUSCARCOLORES,
+      payload: color,
+  });
+
+
+    dispatch({
+      type: BUSCARTALLA,
+      payload: talla,
+  });
+    
+    dispatch({
+      type: BUSCARMARCA,
+      payload: marca,
+  });
+
+
+
+  dispatch({
+    type: BUSCAREMPRESA,
+    payload: tienda,
+});
+  }
+}
+
+
+
+
+//! imagen
+
+export const Guardar_Imagen = async (url_name)=>{
+  return async () => {
+    const d = getEmpresa().correo
+   alert(d)
+    const datos = {
+                    name:url_name, 
+                    correo:getEmpresa().correo, 
+                    urlImagen:'' 
+                  }
+    const endpoint = `http://localhost:3001/empresa/imagen`;
+    const response = await axios.post(endpoint, datos);
+    const resp = response.data;
+
+    console.log("Respuesta del servidor:", resp);
+
+    return resp; // Devuelve la respuesta del servidor en lugar de userData
+   
+  }
+}
+
+export const Guardar_Stock = (dataUser, url) =>{
+  return async () => {
+   
+    const datos = {
+      marca:dataUser.marca, 
+      costo:dataUser.costo, 
+      color:dataUser.color, 
+      modelo:dataUser.modelo, 
+      calidad:dataUser.calidad, 
+      descripcion:dataUser.descripcion, 
+      urlImagen:url, 
+      talla: dataUser.talla,
+      correoEmpresa:getEmpresa().correo
+    }
+    const endpoint = `http://localhost:3001/empresa/create/stock`;
+    const response = await axios.post(endpoint, datos);
+    const resp = response.data;
+
+    console.log("Respuesta del servidor:", resp);
+
+    return resp; // Devuelve la respuesta del servidor en lugar de userData
+   
+  }
 }

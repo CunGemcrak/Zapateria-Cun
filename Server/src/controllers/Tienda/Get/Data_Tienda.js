@@ -1,5 +1,5 @@
 const { Empresa } = require('../../../db.js');
-const { Op } = require('sequelize');
+
 
 const DataTiendaUsuario = async (req, res) => {
     const { correo, pass } = req.params; // Obtenemos los datos de los parámetros de ruta
