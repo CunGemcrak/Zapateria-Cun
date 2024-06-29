@@ -13,7 +13,6 @@ module.exports = (sequelize) => {
     celular: {
       type: DataTypes.STRING,
       allowNull: true,
-      
     },
     email: {
       type: DataTypes.STRING,
@@ -38,7 +37,19 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: 'true',
     },
-  }, { timestamps: false });
+  }, { 
+    timestamps: false,
+  });
 
-  
+  // Sincronización y carga inicial de datos
+  User.sync().then(() => {
+    return User.bulkCreate([
+      { name: 'Luis', apell: 'Buelvas', celular: '3012282338', email: 'labc.1021@gmail.com', password: 'geminis', url: 'null', tipe: '1', state: 'true' },
+      // Agrega más usuarios si es necesario
+    ]);
+  }).catch(err => {
+    console.error('Error en la sincronización de User:', err);
+  });
+
+  return User; // Devuelve el modelo User al final del archivo
 };

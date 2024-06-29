@@ -5,8 +5,9 @@ import icono_ocultar from './img/iconos/cerrar-ojo-black.png'
 import icono_ver from './img/iconos/ojo-con-pestanas-black.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom";
-import { Buscar_User } from "../../../Redux/Actions/Usuario/Action-user"
+import { Buscar_User, Muestra_Cards } from "../../../Redux/Actions/Usuario/Action-user"
 import { Buscar_Empresa } from '../../../Redux/Actions/Empresa/Actions-Empresa';
+//import { setEmpresa, setUser } from '../../Company/Company_Localstorang/Company_Localstorang';
 
 const LoginUser = ({ setView }) => {
   const User = useSelector((state)=>state.USER)
@@ -35,13 +36,17 @@ const LoginUser = ({ setView }) => {
     setTipeUser(event.target.value);
    // alert(event.target.value)
   };
+
+
   useEffect(() => {
-    if (!User || User.state === "true") {
+    if (User && User.state === "true") {
+     
       navigate('/home');
     }
     
-    if(!Emrpesa || Emrpesa.state === "true")
+    if(Emrpesa && Emrpesa.state === "true")
       {
+       
         navigate('/company');
       }
 
@@ -52,6 +57,7 @@ const LoginUser = ({ setView }) => {
     console.log('Contraseña:', password);
     console.log('Tipo de usuario:', tipeuser);
     if(tipeuser ==="usuario"){
+      dispatch(Muestra_Cards())
       dispatch(Buscar_User(username, password))
       navigate('/home')
     }else

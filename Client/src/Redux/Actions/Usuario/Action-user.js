@@ -1,22 +1,23 @@
-import { BUSCARUSUARIO, SALIRCUENTAUSUARIO, GUARDARUSUARIO}from'../../Action-Tipes-js/actions-type-usuario'
+import { BUSCARUSUARIO, SALIRCUENTAUSUARIO, GUARDARUSUARIO, CARDSUSUARIO}from'../../Action-Tipes-js/actions-type-usuario'
 import axios from 'axios'
-
+import {   setUser } from '../../../Component/Company/Company_Localstorang/Company_Localstorang';
 
 //!Buscar un usuario 
 export const Buscar_User = (correo, pass) => {
     return async (dispatch) => {
-       //alert("Mensaje de respuesta: " + JSON.stringify(correo, pass));
+   
         
         try {
+            
             const endpoint = `http://localhost:3001/user/${correo}/${pass}`; // Usamos los datos en la URL como parámetros de ruta
             const response = await axios.get(endpoint);
             const userData = response.data; 
             const userDatos = userData.datos
           
-
+            
             console.log("Mensaje de respuesta: " + JSON.stringify(userDatos));
 
-
+            setUser(userDatos)
             dispatch({
                 type: BUSCARUSUARIO,
                 payload: userDatos,
@@ -72,3 +73,31 @@ export const GuardrUsuario = (userDatas) =>{
         }
     }
 }
+
+
+//! Mostramos cards al usuario 
+export const Muestra_Cards = () => {
+    return async (dispatch) => {
+      try {
+        const endpoint = `http://localhost:3001/user/zapatos`; // Usamos los datos en la URL como parámetros de ruta
+        const response = await axios.get(endpoint);
+        const userData = response.data; 
+  
+        console.log("Mensaje de respuesta de las cards: " + JSON.stringify(userData));
+      //  alert(userData.message )
+        if (userData.message ==='No hay Stock' ) {
+          dispatch({
+            type: CARDSUSUARIO,
+            payload: { name: false },
+          });
+        } else {
+          dispatch({
+            type: CARDSUSUARIO,
+            payload: userData,
+          });
+        }
+      } catch (error) {
+        console.log("Error al enviar la información", error.message);
+      }
+    }
+  }

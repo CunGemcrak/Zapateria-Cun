@@ -1,10 +1,8 @@
 const { DataTypes } = require('sequelize');
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
+
 module.exports = (sequelize) => {
-  // defino el modelo
-  sequelize.define('Marca', {
-    id : {
+  const Marca = sequelize.define('Marca', {
+    id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
@@ -13,6 +11,23 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     }
-  }, { timestamps: false });
+  }, { 
+    timestamps: false,
+    tableName: 'marcas' // Nombre exacto de la tabla en tu base de datos
+  });
 
+  // Sincronización y carga inicial de datos
+  Marca.sync().then(() => {
+    return Marca.bulkCreate([
+      { marca: "Nike" }, { marca: "Adidas" }, { marca: "Puma" },
+      { marca: "Reebok" }, { marca: "Converse" }, { marca: "Vans" },
+      { marca: "New Balance" }, { marca: "Under Armour" },
+      { marca: "Skechers" }, { marca: "Asics" }, { marca: "Fila" },
+    ]);
+  }).catch(err => {
+    console.error('Error en la sincronización de Marca:', err);
+  });
+
+  return Marca; // Devuelve el modelo Marca al final del archivo
 };
+
