@@ -13,7 +13,9 @@ const NavMenu = () => {
   const navigator =  useNavigate()
   const dispatch = useDispatch();
 
- 
+ const handleCarrito = () =>{
+  navigator('/user/carrito')
+ }
   const handlePerfil = () =>{
     navigator('/perfiluser')
   }
@@ -69,7 +71,7 @@ const Hondlehome = () =>{
         </div>
         
         <div className="nav-item">
-          <div className="nav-link">
+          <div className="nav-link" onClick={handleCarrito}>
             <FaShoppingCart className="icon" />
           </div>
         </div>

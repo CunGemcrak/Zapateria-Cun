@@ -1,11 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import './Company.Datos.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Actualizar_Datos_Company } from '../../../Redux/Actions/Empresa/Actions-Empresa'
+import alertify from 'alertifyjs';
+import 'alertifyjs/build/css/alertify.css';
 
 import img from '../Company_img/depositphotos_59468249-stock-photo-shoes-on-the-shelf.jpg';
 
+
+
+
+//firebase
+import {getFirestore, collection, addDoc } from 'firebase/firestore'
+import {getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import appfirebase from '../../../credenciales';
+
+
+const storange = getStorage(appfirebase)
+const db = getFirestore(appfirebase);
+
+
 const CompanyDatos = () => {
   const Empresa = useSelector((state) => state.EMPRESA);
+  const dispatch = useDispatch()
 
   const initialData = {
     nombre: Empresa.name,
@@ -20,10 +37,11 @@ const CompanyDatos = () => {
   const [dataCompany, setDataCompany] = useState(initialData);
   const [editable, setEditable] = useState(false);
   const [imageFile, setImageFile] = useState(null); // Estado para manejar el archivo de imagen
-  const [imagePreview, setImagePreview] = useState(initialData.url); // Estado para la vista previa de la imagen
+  const [imagePreview, setImagePreview] = useState(Empresa.url); // Estado para la vista previa de la imagen
 
   useEffect(() => {
     setDataCompany({
+      id:Empresa.is,
       nombre: Empresa.name,
       correo: Empresa.correo,
       celular: Empresa.celular,
@@ -39,8 +57,35 @@ const CompanyDatos = () => {
     setEditable(true);
   };
 
-  const handleSave = () => {
+  const handleCancelar = ()=>{
     setEditable(false);
+  }
+
+  const handleSave = async() => {
+    alert("Datos "+ JSON.stringify(imageFile))
+
+
+
+    try {
+      const retorno = await  dispatch(Actualizar_Datos_Company(dataCompany, Empresa.id))
+      alertify.alert('Mensaje', retorno.message);
+      setEditable(false);
+      // Guardar la información adicionalmente (ejemplo con Firestore)
+      await addDoc(collection(db, 'empresa'), {
+        ...dataCompany,
+      });
+  
+      
+     
+    } catch (error) {
+      console.error('Error:', error);
+      // Manejar errores según tu lógica de la aplicación
+    }
+
+
+    
+   
+    
     // Aquí podrías enviar la información actualizada al servidor o realizar otras operaciones necesarias
   };
 
@@ -49,17 +94,26 @@ const CompanyDatos = () => {
     setDataCompany({ ...dataCompany, [name]: value });
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0]; // Obtener el primer archivo seleccionado
+  const handleFileChange = async (e) => {
+      
+
+    const file = e.target.files[0];
+
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImageFile(file); // Almacenar el archivo de imagen
-        setImagePreview(reader.result); // Mostrar la vista previa de la imagen
-      };
-      reader.readAsDataURL(file); // Leer el archivo como URL base64
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setDataCompany({ ...dataCompany, url: reader.result });
+        };
+        reader.readAsDataURL(file);
+
+        const refArchivo = ref(storange, `documentos/${file.name}`);
+        await uploadBytes(refArchivo, file);
+        const urle_descarfada = await getDownloadURL(refArchivo);
+        //setFormData({ url: urle_descarfada });
+        setImagePreview(urle_descarfada)
+        setDataCompany({ ...dataCompany, url: urle_descarfada });
     }
-  };
+};
 
   return (
     <div className="companydatos-container">
@@ -115,9 +169,10 @@ const CompanyDatos = () => {
           )}
         </div>
         <div className="companydatos-actions">
-          {editable ? (
+          {editable ? (<>
             <button onClick={handleSave}>Guardar</button>
-          ) : (
+            <button onClick={handleCancelar}>cancelar</button>
+            </>) : (
             <button onClick={handleEdit}>Habilitar Edición</button>
           )}
         </div>
@@ -128,7 +183,10 @@ const CompanyDatos = () => {
         <img src={imagePreview} alt="Logo de la empresa" />
       
       </div>
-      <input type="file" accept="image/*" onChange={handleImageChange} />
+      {editable 
+      ? <input type="file" accept="image/*" onChange={handleFileChange} />
+      :null
+      }
       </div>
     </div>
   );

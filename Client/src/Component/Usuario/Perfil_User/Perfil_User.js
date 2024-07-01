@@ -26,7 +26,7 @@ const PerfilUser =()=>{
                     
                   </div>
                   
-                  <div onClick={() => setView("login")}className="btn-editar">Editar</div>
+                  <div className="btn-editar">Editar</div>
 
                   </div>
                   

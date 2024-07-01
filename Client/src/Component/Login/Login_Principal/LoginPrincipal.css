@@ -3,6 +3,8 @@
   block-size: 100vh;
   margin: 0;
   display: flex;
+  overflow-y: hidden; /* Muestra la barra de desplazamiento vertical si es necesario */
+  overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
 }
 
 .izquierdaGeneral {

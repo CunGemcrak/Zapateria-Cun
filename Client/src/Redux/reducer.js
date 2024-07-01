@@ -3,6 +3,9 @@ import { BUSCAREMPRESA,
     BUSCARCOLORES, //!colores 
     BUSCARTALLA, //! Tallas
     BUSCARMARCA,//!Marcas
+    BUSCARCATEGORIAS,//!Buscar Categorias
+    BUSCARCALIDAD,//! Buscar Calidad 
+    CARDSEMPRESA, //! traemos las cards de la empreza 
 } from "./Action-Tipes-js/actions-type-empresa";
 
 const initialState = {
@@ -11,7 +14,9 @@ const initialState = {
     COLORES:null,
     TALLAS:null,
     MARCAS:null,
-    CARDS:null
+    CARDS:null,
+    CATEGORIAS: null,
+    CALIDAD:null
 
 }
 
@@ -49,11 +54,23 @@ const reducer = (state= initialState, {type, payload})=>{
                     return{
                         ...state, MARCAS:payload
                     } 
+                case BUSCARCATEGORIAS:
+                    return{
+                        ...state, CATEGORIAS: payload
+                    }
                 case CARDSUSUARIO:
                 
                     return{
                         ...state, CARDS:payload
+                    }
+                case BUSCARCALIDAD:
+                    return{
+                        ...state, CALIDAD:payload
                     } 
+                case CARDSEMPRESA:
+                    return{
+                        ...state, CARDS:payload
+                    }
        
             default:
                 return {...state}

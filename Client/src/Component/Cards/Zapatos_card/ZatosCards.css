@@ -1,6 +1,9 @@
-.zapatos-list{
- 
-    display: flex;
-    columns: 4;
-  
-  }
+.zapatos-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Opcional: Ajusta la alineación horizontal según necesites */
+  margin: 0 px;
+  max-width: 1200px;
+  align-items: center;
+}
+

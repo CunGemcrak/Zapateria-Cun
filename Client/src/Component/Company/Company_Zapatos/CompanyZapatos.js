@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Loading from '../../loading/Loading';
 import './CompanyZapatos.css';
 import CompanyMenu from '../Company_Menu/CompanyMenu';
-import { getColores, getEmpresa, getTallas, getMarcas, setTallas, setMarcas } from "../Company_Localstorang/Company_Localstorang";
-import { Historial_Local, Guardar_Stock, Busqueda_Color, Busqueda_Tallas, Buscueda_Calidad, Busqueda_Marca } from '../../../Redux/Actions/Empresa/Actions-Empresa';
+import {  setTallas, setMarcas } from "../Company_Localstorang/Company_Localstorang";
+import {Guardar_Stock} from '../../../Redux/Actions/Empresa/Actions-Empresa';
 import alertify from 'alertifyjs';
 import 'alertifyjs/build/css/alertify.css';
 
@@ -32,13 +32,16 @@ const CompanyZapatos = () => {
         calidad: '',
        
     });
-    const [url, setUrl] = useState()
+    const [url, setUrl] = useState('https://firebasestorage.googleapis.com/v0/b/stylezapapp.appspot.com/o/documentos%2F1097661.jpg?alt=media&token=f17e6f46-b74d-4fcb-9f2e-0d334921d2a9')
 
   
     const dispatch = useDispatch();
     const colores = useSelector((state) => state.COLORES || []);
+    const empresa = useSelector((state) => state.EMPRESA || []);
     const tallas = useSelector((state) => state.TALLAS || []);
     const marcas = useSelector((state) => state.MARCAS || []);
+    const calidad = useSelector((state) =>state.CALIDAD || [])
+    const categorias = useSelector((state)=>state.CATEGORIAS || [])
 
     
 
@@ -132,39 +135,50 @@ const CompanyZapatos = () => {
     };
 
 
-    const HandleGuardar = async () =>{
-       
-     
-        try {
-            alert(JSON.stringify(formData))
-            const retorno = await  dispatch(Guardar_Stock(formData, url))
-         
-           alert(JSON.stringify(retorno))
-            //guardaremos la imagen 
-            alertify.alert("Mensaje", retorno.message)
-            await addDoc(collection(db, "zapatos"),{
-                ...formData
-            })
-
-
-
-            setFormData({
-                color: '',
-                talla: '',
-                costo: '',
-                marca: '',
-                modelo: '',
-                descripcion: '',
-                calidad: '',
-               
-            });
-            setUrl('')
-        } catch (error) {
-            console.log("error")
-            
+    const HandleGuardar = async () => {
+        // Verificar que todos los campos necesarios estén llenos
+        if (
+          !formData.color ||
+          !formData.talla ||
+          !formData.costo ||
+          !formData.marca ||
+          !formData.categoria ||
+          !formData.descripcion ||
+          !formData.calidad
+        ) {
+          // Mostrar mensaje de alerta con Alertify
+          alertify.alert('Mensaje', 'Faltan datos en el formulario');
+          return; // Detener el proceso si faltan datos
         }
-
-    }
+      
+        try {
+          const retorno = await dispatch(Guardar_Stock(formData, url, empresa.id));
+          alertify.alert('Mensaje', retorno.message);
+      
+          // Guardar la información adicionalmente (ejemplo con Firestore)
+          await addDoc(collection(db, 'zapatos'), {
+            ...formData,
+          });
+      
+          // Limpiar el formulario y resetear valores
+          setFormData({
+            color: '',
+            talla: '',
+            costo: '',
+            marca: '',
+            categoria: '',
+            descripcion: '',
+            calidad: '',
+          });
+      
+          setUrl(
+            'https://firebasestorage.googleapis.com/v0/b/stylezapapp.appspot.com/o/documentos%2F1097661.jpg?alt=media&token=f17e6f46-b74d-4fcb-9f2e-0d334921d2a9'
+          );
+        } catch (error) {
+          console.error('Error:', error);
+          // Manejar errores según tu lógica de la aplicación
+        }
+      };
 
     return (
         <div>
@@ -172,7 +186,7 @@ const CompanyZapatos = () => {
             <CompanyMenu className="nav-menu" />
             <div className="body-zapatos">
                 <h2>Crear Nuevo Zapato</h2>
-                <form className="form-zapatos" onSubmit={handleSubmit}>
+                <div className="form-zapatos" onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label>Color:</label>
                         <select
@@ -234,29 +248,40 @@ const CompanyZapatos = () => {
                         </div>
                     </div>
                     <div className="form-group">
-                        <label>Modelo:</label>
-                        <input
-                            type="text"
-                            name="modelo"
-                            value={formData.modelo}
-                            onChange={handleChange}
-                        />
+                        <label>Categoria:</label>
+                        <div className='grupor-flex'>
+                            <select
+                                name="categoria"
+                                value={formData.categoria}
+                                onChange={handleChange}
+                            >
+                                <option value="">Seleccione una categoria</option>
+                                {categorias.map((m) => (
+                                    <option key={m.id} value={m.categoria}>
+                                        {m.categoria}
+                                    </option>
+                                ))}
+                            </select>
+                            <label className='btn-mas' onClick={hanldeAddMarca} title='Agregar una nueva marca'>+</label>
+                        </div>
                     </div>
                     <div className="form-group">
                         <label>Calidad:</label>
                         <div className='grupor-flex'>
-                        <select
-                            name="calidad"
-                            value={formData.calidad}
-                            onChange={handleChange}
-                        >
-                            <option value="">Seleccione</option>
-                            <option value="AA">AA</option>
-                            <option value="AAA">AAA</option>
-                            <option value="Tipo Original">Tipo Original</option>
-                            <option value="Original">Original</option>
-                        </select>
-                      </div>
+                            <select
+                                name="calidad"
+                                value={formData.calidad}
+                                onChange={handleChange}
+                            >
+                                <option value="">Seleccione una calidad</option>
+                                {calidad.map((m) => (
+                                    <option key={m.id} value={m.tipo}>
+                                        {m.tipo}
+                                    </option>
+                                ))}
+                            </select>
+                            <label className='btn-mas' onClick={hanldeAddMarca} title='Agregar una nueva marca'>+</label>
+                        </div>
                     </div>
                     <div className="form-group form-group-textarea">
                         <label>Descripción:</label>
@@ -266,7 +291,7 @@ const CompanyZapatos = () => {
                             onChange={handleChange}
                         ></textarea>
                     </div>
-                    
+                  {  /*
                     <div className="form-group">
                         <label>Subir Imagen:</label>
                         <input
@@ -274,15 +299,21 @@ const CompanyZapatos = () => {
                             accept="image/*"
                             onChange={handleFileChange}
                         />
-                    </div>
-                    {url && (
+                    </div>*/
+                    }
                         <div className="form-group">
-                            <label>Vista Previa:</label>
+                            <label >Vista Previa:</label>
                             <img src={url} alt="Vista previa" className="img-preview" />
+                            <label>Subir Imagen:</label>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleFileChange}
+                        />
                         </div>
-                    )}
-                    <div onClick={HandleGuardar}>Guardar Zapato</div>
-                </form>
+                    
+                    <div onClick={HandleGuardar}  className='btn-Enviar'>Guardar Zapato</div>
+                </div>
             </div>
         </div>
     );

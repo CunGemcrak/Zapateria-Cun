@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaSignOutAlt, FaBuilding, FaPlusSquare, FaCheckCircle } from 'react-icons/fa';
+import { FaSignOutAlt, FaBuilding, FaPlusSquare, FaCheckCircle, FaListAlt  } from 'react-icons/fa';
 import './CompanyMenu.css';
 import iconEstiloZap from '../../loading/img/download.gif';
 
@@ -26,6 +26,10 @@ const handleZapatos = () =>{
 
 const handleVenta =()=>{
   navigator('/company/ventas')
+}
+
+const handleStock = () =>{
+  navigator('/company/stock')
 }
 
   return (
@@ -56,12 +60,18 @@ const handleVenta =()=>{
         </div>
 
         <div className="nav-item">
+          <div className="nav-link" onClick={handleStock}>
+            <FaListAlt  className="icon" />
+            <span className="icon-label">stock</span>
+          </div>
+        </div>
+
+        <div className="nav-item">
           <div className="nav-link" onClick={handleVenta}>
             <FaCheckCircle className="icon" />
             <span className="icon-label">ventras</span>
           </div>
         </div>
-
         <div className="nav-item">
           <button className="logout-button">
             <FaSignOutAlt className="icon" onClick={hondleSalir} />
