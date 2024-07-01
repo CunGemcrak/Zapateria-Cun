@@ -19,10 +19,10 @@ const DataTiendaUsuario = async (req, res) => {
         });
 
         if (usuario) {
-            console.log('Usuario encontrado:', usuario);
+          //  console.log('Usuario encontrado:', usuario);
             return res.status(200).json({ usuario });
         } else {
-            console.log('Usuario no encontrado');
+         //   console.log('Usuario no encontrado');
             return res.status(404).json({ message: 'Usuario no encontrado' });
         }
     } catch (error) {

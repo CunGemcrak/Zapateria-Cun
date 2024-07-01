@@ -34,7 +34,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Calidad, Color, Empresa, Imagen, Marca, Talla, User, Venta, Zapato } = sequelize.models;
+const { Categoria, Calidad, Color, Empresa, Imagen, Marca, Talla, User, Venta, Zapatos } = sequelize.models;
 
 // Definimos la asociación 1:N entre Login y Necesidades
 // Login.hasMany(Necesidades, { foreignKey: 'id_login', sourceKey: 'id' });
@@ -48,6 +48,6 @@ const { Calidad, Color, Empresa, Imagen, Marca, Talla, User, Venta, Zapato } = s
 // Función para inicializar la base de datos
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-  Calidad, Color, Empresa, Imagen, Marca, Talla, User, Venta, Zapato,
+  Categoria, Calidad, Color, Empresa, Imagen, Marca, Talla, User, Venta, Zapatos,
   conn: sequelize,     // para importar la conexión { conn } = require('./db.js');
 };

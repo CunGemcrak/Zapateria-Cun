@@ -3,7 +3,7 @@ const { Op } = require('sequelize');
 
 const CrearUsuario = async (req, res) => {
   const { name, apell, correo, password } = req.body;
-  console.log('Este es el query: ' + JSON.stringify(req.body));
+  console.log('Este es el query : ' + JSON.stringify(req.body));
 
   try {
     if (!name || !apell || !correo || !password) {

@@ -1,35 +1,50 @@
+// Middleware de validación
+const validarCreacionStock = (req, res, next) => {
+  const { tienda, marca, costo, color, modelo, calidad, descripcion, urlImagen, talla, correoEmpresa } = req.body;
+
+  if (!tienda || !marca || !costo || !color || !modelo || !calidad || !descripcion || !urlImagen || !talla || !correoEmpresa) {
+    console.log('Faltan datos');
+    return res.status(400).json({ message: 'Faltan datos' });
+  }
+
+  // Puedes agregar más validaciones específicas según tus necesidades, como verificar tipos de datos, longitud de cadenas, etc.
+
+  next(); // Continuar con la siguiente función (por ejemplo, la función para crear el stock)
+};
+
+// Ruta para crear stock
 const { Empresa, Zapatos } = require('../../../db.js');
 
 const CrearStock = async (req, res) => {
-  const { marca, costo, color, modelo, calidad, descripcion, urlImagen, correoEmpresa, talla } = req.body;
-console.log("este es el body del create stock "+ JSON.stringify(req.body))
+  const { tienda, marca, costo, color, modelo, calidad, descripcion, urlImagen, talla, correoEmpresa } = req.body;
+
   try {
-    if (!marca || !costo || !color || !modelo || !calidad || !descripcion || !urlImagen || !correoEmpresa || !talla) {
-      return res.status(400).json({ message: 'Faltan datos' });
-    }
-    console.log("paso validacion ")
+    // Validar que los datos estén presentes y sean válidos
+    // Aquí podrías usar el middleware validarCreacionStock antes de llegar a esta parte
+
     // Buscar la empresa por correo electrónico
     const empresa = await Empresa.findOne({
       where: { correo: correoEmpresa }
     });
-    console.log("reviso la empresa ")
+
     if (!empresa) {
-      return res.status(201).json({ message: 'Empresa no encontrada' });
+      return res.status(404).json({ message: 'Empresa no encontrada' });
     }
-    console.log("valido  la empresa ")
+
     // Crear el zapato
     const zapato = await Zapatos.create({
+      tienda,
       marca,
       costo,
       color,
       modelo,
       calidad,
       descripcion,
-      url:urlImagen,
-      talla:talla,
-      EmpresaId: empresa.id // Asociar el zapato con la empresa encontrada
+      url: urlImagen,
+      talla,
+      EmpresaId: empresa.id,
+      activo: true
     });
-    console.log("creo el zapato")
 
     return res.status(200).json({ message: 'Stock creado y relacionado correctamente' });
   } catch (error) {
@@ -38,4 +53,4 @@ console.log("este es el body del create stock "+ JSON.stringify(req.body))
   }
 };
 
-module.exports = { CrearStock };
+module.exports = { validarCreacionStock, CrearStock };

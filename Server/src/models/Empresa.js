@@ -46,7 +46,8 @@ module.exports = (sequelize) => {
   // Sincronización y carga inicial de datos
   Empresa.sync().then(() => {
     return Empresa.bulkCreate([
-      { name: 'Luis', descripcion: 'Buelvas', celular: '3012282338', correo: 'admin@gmail.com', password: 'geminis', url: 'null', status: 'true' },
+      { name: 'Zapatoskool', descripcion: 'Buelvas', celular: '3012282338', correo: 'tienda1@gmail.com', password: 'geminis', url: 'null', status: 'true' },
+      { name: 'gemcrak', descripcion: 'Buelvas', celular: '3012282338', correo: 'tienda2@gmail.com', password: 'geminis', url: 'null', status: 'true' },
       // Agrega más empresas si es necesario
     ]);
   }).catch(err => {

@@ -6,10 +6,10 @@ const obtenerCalidad = async (req, res) => {
         const calidad = await Calidad.findAll();
 
         if (calidad.length > 0) {
-            console.log('Colores encontrados:', calidad);
+       //     console.log('Colores encontrados:', calidad);
             return res.status(200).json({ calidad });
         } else {
-            console.log('No se encontraron colores');
+        //    console.log('No se encontraron colores');
             return res.status(404).json({ message: 'No se encontraron calidad' });
         }
     } catch (error) {

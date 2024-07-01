@@ -3,7 +3,7 @@ const { Op } = require('sequelize');
 
 const BusquedaUsuario = async (req, res) => {
     const { correo, pass } = req.params; // Obtenemos los datos de los parámetros de ruta
-    console.log('Correo: ' + correo + ', Contraseña: ' + pass);
+    console.log('entro aca Correo: ' + correo + ', Contraseña: ' + pass);
     
     try {
         if (!correo || !pass) {

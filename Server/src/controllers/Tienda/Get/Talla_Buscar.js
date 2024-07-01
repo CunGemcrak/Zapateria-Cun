@@ -4,10 +4,10 @@ const obtenerTallas = async (req, res) => {
     try {
         const tallas = await Talla.findAll();
         if (tallas.length > 0) {
-            console.log('Tallas encontradas:', tallas);
+         //   console.log('Tallas encontradas:', tallas);
             return res.status(200).json({ tallas });
         } else {
-            console.log('No se encontraron tallas');
+          //  console.log('No se encontraron tallas');
             return res.status(404).json({ message: 'No se encontraron tallas' });
         }
     } catch (error) {
