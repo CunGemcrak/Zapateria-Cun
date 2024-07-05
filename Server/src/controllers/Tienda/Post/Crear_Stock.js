@@ -1,8 +1,8 @@
 // Middleware de validación
 const validarCreacionStock = (req, res, next) => {
-  const { tienda, marca, costo, color, modelo, calidad, descripcion, urlImagen, talla, correoEmpresa } = req.body;
+  const {tipo, tienda, marca, costo, color, modelo, calidad, descripcion, urlImagen, talla, correoEmpresa } = req.body;
 
-  if (!tienda || !marca || !costo || !color || !modelo || !calidad || !descripcion || !urlImagen || !talla || !correoEmpresa) {
+  if (!tipo || !tienda || !marca || !costo || !color || !modelo || !calidad || !descripcion || !urlImagen || !talla || !correoEmpresa) {
     console.log('Faltan datos');
     return res.status(400).json({ message: 'Faltan datos' });
   }
@@ -16,7 +16,7 @@ const validarCreacionStock = (req, res, next) => {
 const { Empresa, Zapatos } = require('../../../db.js');
 
 const CrearStock = async (req, res) => {
-  const { tienda, marca, costo, color, modelo, calidad, descripcion, urlImagen, talla, correoEmpresa } = req.body;
+  const { tipo, tienda, marca, costo, color, modelo, calidad, descripcion, urlImagen, talla, correoEmpresa } = req.body;
 
   try {
     // Validar que los datos estén presentes y sean válidos
@@ -34,6 +34,7 @@ const CrearStock = async (req, res) => {
     // Crear el zapato
     const zapato = await Zapatos.create({
       tienda,
+      tipo,
       marca,
       costo,
       color,

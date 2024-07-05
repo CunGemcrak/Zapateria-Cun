@@ -3,8 +3,20 @@ const { Router } = require('express');
 //!importamos controllers  para almacenar inforamcion
 const {CrearUsuario} = require('../controllers/Usuario/Post/Crear_Usuario')
 const {BusquedaUsuario} = require('../controllers/Usuario/Get/Data_Usuario');
-const {DataTiendaUsuario} = require('../controllers/Tienda/Get/Data_Tienda');
+const {CrearCompra} = require('../controllers/Usuario/Post/Crear_Order')
+
+
 const { CrearEmpresa } = require('../controllers/Usuario/Post/Crear_Empresa');
+const { CreateOrderVenta } = require('../controllers/Usuario/Post/CreateOrderVenta')
+const { BuscarOrdersUsers } = require('../controllers/Usuario/Get/BuscarOrdersUsers')
+
+
+
+
+
+
+const {DataTiendaUsuario} = require('../controllers/Tienda/Get/Data_Tienda');
+
 
 
 const { obtenerColores } = require('../controllers/Tienda/Get/Colores_Buscar');
@@ -13,13 +25,16 @@ const { obtenerTallas } = require('../controllers/Tienda/Get/Talla_Buscar');
 const { obtenerMarcas } = require('../controllers/Tienda/Get/Marca_Buscar');
 const {obtenerCategorias} =  require('../controllers/Tienda/Get/Buscar_Categorias');
 const {ObtenerCardsEmpresa } = require('../controllers/Tienda/Get/Buscar_Cards_Empresa');
+const {obtenerTienda} = require('../controllers/Tienda/Get/Buscar_Tienda')
 const { createPaymentHandler } = require('../controllers/MercadoPago/metodo_pago/MercadoPago')
+const {ObtenerOrdersEmpresa} =require('../controllers/Tienda/Get/ObtenerOrdersEmpresa')
 
 
 
 //!mwetodos put  empreza
 const {ActualizarEmpresa} = require('../controllers/Tienda/Put/ActualizarEmpresa')
 const {Activar_Ocultar_Card} = require('../controllers/Tienda/Put/Activar_Ocultar_Card')
+const {ActualizaOrder} = require('../controllers/Tienda/Get/Actualizar_Estado_Orden')
 
 
 
@@ -41,8 +56,10 @@ router.get('/empresa/color/',obtenerColores)
 router.get('/empresa/tallas/',obtenerTallas)
 router.get('/empresa/marcas',obtenerMarcas)
 router.get('/empresa/calidad',obtenerCalidad)
-router.get('/empresa/categorias',obtenerCategorias)
+router.get('/empresa/:id', obtenerTienda)
+router.post('/empresa/categorias',obtenerCategorias)
 router.get('/empresa/buscar/stock/:id', ObtenerCardsEmpresa)
+router.get('/empresa/orders/all/:id', ObtenerOrdersEmpresa)
 
 
 
@@ -56,10 +73,16 @@ router.post('/empresa/create/stock', CrearStock)
 
 //!MEtodos Usuario 
 router.post('/user/create', CrearUsuario)
+router.post('/user/venta', CrearCompra) //!sse crea la url de mercado pago
+router.post('/user/create/order', CreateOrderVenta)//!Se crea la orden de venta 
+router.get('/user/orders/:id', BuscarOrdersUsers)//!buscar las ordenes del usuario
 router.get('/user/:correo/:pass', BusquedaUsuario);
 router.get('/user/zapatos', BusquedaZapatosUsuario)
 
 
+
 //! Actividad Mercado PAgo
-router.get('compra/', createPaymentHandler)
+router.post('/compra', createPaymentHandler)
+router.put('/order/actualizar/:id', ActualizaOrder);
+
 module.exports = router;

@@ -9,15 +9,32 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    costo: {
+    idmercadopago: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    producto: {
+   
+    id_usuario: {
+      type: DataTypes.JSON,
+      allowNull: false,
+    },
+    item: {
+      type: DataTypes.JSON,
+      allowNull: false,
+    },
+    preciototal: {
       type: DataTypes.STRING,
       allowNull: false,
-    }
-  }, { timestamps: false });
+    },
+    eliminar: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    estado: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  }, { timestamps: true });
 
  
 };

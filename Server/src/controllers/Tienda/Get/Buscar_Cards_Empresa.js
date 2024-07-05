@@ -14,7 +14,7 @@ const ObtenerCardsEmpresa = async (req, res) => {
         if (cards.length > 0) {
             return res.status(200).json({ cards });
         } else {
-            console.log('No se encontraron zapatos para esta empresa');
+          //  console.log('No se encontraron zapatos para esta empresa');
             return res.status(404).json({ message: 'No se encontraron zapatos para esta empresa' });
         }
     } catch (error) {

@@ -46,8 +46,8 @@ module.exports = (sequelize) => {
   // Sincronización y carga inicial de datos
   Empresa.sync().then(() => {
     return Empresa.bulkCreate([
-      { name: 'Zapatoskool', descripcion: 'Buelvas', celular: '3012282338', correo: 'tienda1@gmail.com', password: 'geminis', url: 'null', status: 'true' },
-      { name: 'gemcrak', descripcion: 'Buelvas', celular: '3012282338', correo: 'tienda2@gmail.com', password: 'geminis', url: 'null', status: 'true' },
+      { name: 'Zapatoskool', descripcion: 'Buelvas', celular: '3012282338', correo: 'tienda1@gmail.com', password: 'geminis', url: 'https://firebasestorage.googleapis.com/v0/b/stylezapapp.appspot.com/o/documentos%2Fthumb-1920-1010687.jpg?alt=media&token=7b366209-2deb-4b24-9eeb-b45c936ec7b2', status: 'true' },
+      { name: 'gemcrak', descripcion: 'Buelvas', celular: '3012282338', correo: 'tienda2@gmail.com', password: 'geminis', url: 'https://firebasestorage.googleapis.com/v0/b/stylezapapp.appspot.com/o/documentos%2Fstock-vector-cartoon-shoe-comic-book-sports-clothing-retro-vector-comics-pop-art-design-2425165073.jpg?alt=media&token=2fdb1bb0-1534-4dbf-972a-862eeb1b3c6c', status: 'true' },
       // Agrega más empresas si es necesario
     ]);
   }).catch(err => {

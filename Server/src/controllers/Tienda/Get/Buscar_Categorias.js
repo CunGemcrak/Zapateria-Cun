@@ -1,12 +1,13 @@
 const { Categoria } = require('../../../db.js');
 
 const obtenerCategorias = async (req, res) => {
+   
     try {
         // Obtener todos los colores guardados en la base de datos
         const categoria = await Categoria.findAll();
 
         if (categoria.length > 0) {
-            console.log('Categorias encontrados:', categoria);
+         //   console.log('Categorias encontrados:', categoria);
             return res.status(200).json({ categoria });
         } else {
             console.log('No se encontraron colores');
