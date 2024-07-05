@@ -6,6 +6,7 @@ import { BUSCAREMPRESA,
   BUSCARCATEGORIAS,//!Buscar Categorias
   BUSCARCALIDAD,//! Buscar Calidad
   CARDSEMPRESA,
+  EMPRESAORDERS,//LAS orders de la empresa 
  } from "../../Action-Tipes-js/actions-type-empresa";
 
  import { setEmpresa, getEmpresa } from "../../../Component/Company/Company_Localstorang/Company_Localstorang";
@@ -170,11 +171,11 @@ export const Buscar_Categoria = ()=>{
   return async (dispatch) => {  
     try {
       const endpoint = `http://localhost:3001/empresa/categorias`; // Usamos los datos en la URL como parámetros de ruta
-      const response = await axios.get(endpoint);
+      const response = await axios.post(endpoint);
       const userData = response.data;
     //  const  user = userData.data
 
-      console.log("Mensaje de respuesta: " + JSON.stringify(userData));
+      console.log("Mensaje de respuesta Categorias: " + JSON.stringify(userData));
      
      
       dispatch({
@@ -187,6 +188,8 @@ export const Buscar_Categoria = ()=>{
 
   }
 }
+
+
 //!Validacion del localstorang
 export const Historial_Local = (color, talla, marca, tienda)=>{
   return async (dispatch) => {
@@ -247,6 +250,7 @@ export const Guardar_Stock = (dataUser, url, id) =>{
    
     const datos = {
       tienda:id,
+      tipo:dataUser.tipo,
       marca:dataUser.marca, 
       costo:dataUser.costo, 
       color:dataUser.color, 
@@ -301,5 +305,22 @@ export const Activar_Ocultar_Cards = (id) =>{
       const userData = response.data;
       console.log("estado actual " + userData);
     return true
+  }
+}
+
+
+export const Buscar_Orders_Empresa = (id)=>{
+  return async (dispatch) =>{
+    
+    
+    const endpoint = `http://localhost:3001/empresa/orders/all/${id}`; // URL del endpoint con el ID de la empresa
+    const response = await axios.get(endpoint);
+    const userData = response.data;
+
+
+    dispatch({
+      type: EMPRESAORDERS, // Tipo de acción exitosa (debes definir este tipo en tus acciones Redux)
+      payload: userData // Datos de las cards obtenidas, asumiendo que userData tiene una propiedad 'cards'
+    });
   }
 }

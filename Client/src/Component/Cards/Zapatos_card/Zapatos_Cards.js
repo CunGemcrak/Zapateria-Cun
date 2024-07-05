@@ -33,6 +33,7 @@ const ZapatosCards = () => {
           <ZapatosCard
             key={card.id}
             id={card.id}
+            tienda = {card.tienda}
             marca={card.marca}
             costo={card.costo}
             color={card.color}

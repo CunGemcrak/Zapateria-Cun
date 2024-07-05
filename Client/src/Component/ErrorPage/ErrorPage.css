@@ -1,0 +1,34 @@
+.body-Error{
+    text-align:center;
+    
+    justify-content: center;
+    align-items: center;
+    flex: auto;
+    margin:50px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.imagein-error{
+    width: 350px;
+}
+.btn-error{
+    font-weight: 700;
+    background-color: green;
+    color: white;
+    width: 250px;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 18px;
+}
+.btn-error:hover{
+    background-color: black;
+}
+
+.btn-error:active{
+    background-color: black;
+    border: 2px solid  red;
+ 
+}
+

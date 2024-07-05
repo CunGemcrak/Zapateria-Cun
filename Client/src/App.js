@@ -1,7 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { Routes,Route} from "react-router-dom";
+import { Routes,Route, Navigate} from "react-router-dom";
 import LoginPrincipal from './Component/Login/Login_Principal/LoginPrincipal';
 
 import Home from './Component/home/Home';
@@ -11,10 +11,15 @@ import CompanyZapatos from './Component/Company/Company_Zapatos/CompanyZapatos';
 import CompanyOrders from './Component/Company/Company_Order/CompanyOrders';
 import CompanyStock from './Component/Company/Company_stock/CompanyStock';
 import Carrito from './Component/Carrito/Carrito_Card/Carri_Compras_User';
+import CompraRespuesta from './Component/Carrito/Carrito_Respuesta/Carro_Respuesta';
+import ComprasUser from './Component/Usuario/Compras_User/Compras_User';
+import ErrorPage from './Component/ErrorPage/ErrorPage';
+
 
 function App() {
   return (
     <div className="App">
+ 
       <Routes>
               
               <Route path='/' element={<LoginPrincipal/>}/>
@@ -28,9 +33,14 @@ function App() {
               <Route path='/company/ventas' element={<CompanyOrders/>}/>
               <Route path='/company/stock' element={<CompanyStock/>}/>
               <Route path='/user/carrito' element={<Carrito/>}/>
-             
-             
-      </Routes>
+              <Route path='/user/carrito/respuesta' element={<CompraRespuesta/>}/>
+              <Route path='/user/compras' element={<ComprasUser/>}/>
+            
+          <Route path="*" element={<ErrorPage/>} />
+        </Routes>
+   
+     
+   
      
 
 

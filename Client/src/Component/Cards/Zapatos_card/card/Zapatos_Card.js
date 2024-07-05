@@ -10,6 +10,7 @@ import { addToCart, removeFromCart, getCartItems } from '../../../Carrito/Carrit
 import {Activar_Ocultar_Cards} from '../../../../Redux/Actions/Empresa/Actions-Empresa'
 const ZapatosCard = ({
   id,
+  tienda,
   marca,
   costo,
   color,
@@ -55,6 +56,7 @@ const ZapatosCard = ({
     const item = {
       id,
       marca,
+      tienda,
       costo,
       color,
       modelo,
@@ -86,11 +88,13 @@ const ZapatosCard = ({
         className="zapatos-image"
       />
       <div className="zapatos-info">
+      
         <div className='titulo-zapato'><p className='black-text'>Marca: </p> {marca}</div>
         <div className="zapatos-price">
           <div className='parrafo-flex'><p className='black-text'>Calidad:</p> {calidad}   <p className='black-text'> Categoria:</p> {modelo}</div>
           <div className='parrafo-flex'><p className='black-text'>Tallas:</p> {talla} <p className='black-text'> Color:</p> {color}</div>
           <div className='parrafo-flex'><p className='black-text'>Costo:</p> ${costo}</div>
+        
         </div>
         {
           User.state === "true" ?

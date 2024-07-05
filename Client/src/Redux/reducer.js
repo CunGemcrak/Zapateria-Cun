@@ -1,4 +1,12 @@
-import { BUSCARUSUARIO, SALIRCUENTAUSUARIO, GUARDARUSUARIO, CARDSUSUARIO } from './Action-Tipes-js/actions-type-usuario'
+import { BUSCARUSUARIO, 
+         SALIRCUENTAUSUARIO, 
+         GUARDARUSUARIO, 
+         CARDSUSUARIO,
+         ORDERDESARROLLADAS,//!creamos la ordern usuario
+         ORDERUSER,//!Buscamos las orders del usuari
+          } from './Action-Tipes-js/actions-type-usuario'
+
+          
 import { BUSCAREMPRESA, 
     BUSCARCOLORES, //!colores 
     BUSCARTALLA, //! Tallas
@@ -6,6 +14,8 @@ import { BUSCAREMPRESA,
     BUSCARCATEGORIAS,//!Buscar Categorias
     BUSCARCALIDAD,//! Buscar Calidad 
     CARDSEMPRESA, //! traemos las cards de la empreza 
+    EMPRESAORDERS,//!Empresas
+  
 } from "./Action-Tipes-js/actions-type-empresa";
 
 const initialState = {
@@ -16,7 +26,9 @@ const initialState = {
     MARCAS:null,
     CARDS:null,
     CATEGORIAS: null,
-    CALIDAD:null
+    CALIDAD:null,
+    VENTAUSER:null,
+    ORDENES:[],
 
 }
 
@@ -70,6 +82,19 @@ const reducer = (state= initialState, {type, payload})=>{
                 case CARDSEMPRESA:
                     return{
                         ...state, CARDS:payload
+                    }
+                case ORDERDESARROLLADAS:
+                    return{
+                        ...state, VENTAUSER:payload
+                    }
+                case ORDERUSER:
+                    return{
+                        ...state, ORDENES:payload
+                    }
+
+                case EMPRESAORDERS:
+                    return{
+                        ...state, ORDENES:payload
                     }
        
             default:

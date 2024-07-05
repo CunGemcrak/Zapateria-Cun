@@ -50,7 +50,7 @@ const CompanyDatos = () => {
       url: Empresa.url,
       status: Empresa.status,
     });
-    setImagePreview(Empresa.url || img); // Si no hay URL de la empresa, utiliza la imagen inicial
+    setImagePreview(Empresa.url || 'https://firebasestorage.googleapis.com/v0/b/stylezapapp.appspot.com/o/documentos%2Fstock-vector-cartoon-shoe-comic-book-sports-clothing-retro-vector-comics-pop-art-design-2425165073.jpg?alt=media&token=2fdb1bb0-1534-4dbf-972a-862eeb1b3c6c'); // Si no hay URL de la empresa, utiliza la imagen inicial
   }, [Empresa]);
 
   const handleEdit = () => {

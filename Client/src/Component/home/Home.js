@@ -4,13 +4,16 @@ import NavMenu from '../navMenu/NavMenu';
 import ZapatosCards from '../Cards/Zapatos_card/Zapatos_Cards';
 import './Home.css';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../loading/Loading';
 
+import { setUserData, getUserData } from '../Usuario/LocalStorangUser/LocalstorangUser';
+import { LogalstorangUSER } from '../../Redux/Actions/Usuario/Action-user';
+
 const Home = () => {
   const user = useSelector((state) => state.USER);
-  //const cards = useSelector((state) => state.CARDS);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
 
@@ -23,10 +26,18 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
+    const storedUser = getUserData();
+
     if (!user || user.state === "false") {
-      navigate('/');
+      if (!storedUser || storedUser.state === "false") {
+        navigate('/');
+      } else {
+        dispatch(LogalstorangUSER(storedUser));
+      }
+    } else {
+      setUserData(user);
     }
-  }, [navigate, user]);
+  }, [navigate, user, dispatch]);
 
   return (
     <div className="home-container">

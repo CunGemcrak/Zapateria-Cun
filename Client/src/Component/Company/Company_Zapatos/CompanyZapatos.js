@@ -4,7 +4,7 @@ import Loading from '../../loading/Loading';
 import './CompanyZapatos.css';
 import CompanyMenu from '../Company_Menu/CompanyMenu';
 import {  setTallas, setMarcas } from "../Company_Localstorang/Company_Localstorang";
-import {Guardar_Stock} from '../../../Redux/Actions/Empresa/Actions-Empresa';
+import {Guardar_Stock, Buscar_Categoria} from '../../../Redux/Actions/Empresa/Actions-Empresa';
 import alertify from 'alertifyjs';
 import 'alertifyjs/build/css/alertify.css';
 
@@ -30,9 +30,10 @@ const CompanyZapatos = () => {
         modelo: '',
         descripcion: '',
         calidad: '',
+        tipo:'',
        
     });
-    const [url, setUrl] = useState('https://firebasestorage.googleapis.com/v0/b/stylezapapp.appspot.com/o/documentos%2F1097661.jpg?alt=media&token=f17e6f46-b74d-4fcb-9f2e-0d334921d2a9')
+    const [url, setUrl] = useState('https://firebasestorage.googleapis.com/v0/b/stylezapapp.appspot.com/o/documentos%2Fthumb-1920-1010687.jpg?alt=media&token=7b366209-2deb-4b24-9eeb-b45c936ec7b2')
 
   
     const dispatch = useDispatch();
@@ -64,6 +65,7 @@ const CompanyZapatos = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+       
     };
 
     
@@ -144,7 +146,8 @@ const CompanyZapatos = () => {
           !formData.marca ||
           !formData.categoria ||
           !formData.descripcion ||
-          !formData.calidad
+          !formData.calidad ||
+          !formData.tipo
         ) {
           // Mostrar mensaje de alerta con Alertify
           alertify.alert('Mensaje', 'Faltan datos en el formulario');
@@ -179,6 +182,10 @@ const CompanyZapatos = () => {
           // Manejar errores según tu lógica de la aplicación
         }
       };
+
+      useEffect(()=>{
+       dispatch(Buscar_Categoria())
+      },[dispatch])
 
     return (
         <div>
@@ -283,6 +290,31 @@ const CompanyZapatos = () => {
                             <label className='btn-mas' onClick={hanldeAddMarca} title='Agregar una nueva marca'>+</label>
                         </div>
                     </div>
+
+
+
+                    <div className="form-group">
+  <label htmlFor="tipo">Tipo:</label>
+  <div className="grupo-flex">
+    <select
+      id="tipo"
+      name="tipo"
+      value={formData.tipo}
+      onChange={handleChange}
+    >
+      <option value="">Seleccione un Tipo</option>
+      <option value="Dama">Dama</option>
+      <option value="Caballero">Caballero</option>
+      <option value="Mixto">Mixto</option>
+    </select>
+  </div>
+</div>
+
+
+
+
+
+
                     <div className="form-group form-group-textarea">
                         <label>Descripción:</label>
                         <textarea
