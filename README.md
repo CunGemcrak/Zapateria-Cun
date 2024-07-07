@@ -63,5 +63,33 @@ Está permitido, **bajo tu responsabilidad**, actualizar las dependencias a vers
 
 <br />
 
+## **⚠️ TECNOLOGÍAS**
+
+Para el desarrollo del ejercicio se implementan tecnologías como:
+
+### **Front-end**
+- ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white) **React**
+- ![Firebase](https://img.shields.io/badge/-Firebase-FFCA28?logo=firebase&logoColor=white) **Firebase** (`firebase`: `^10.12.2`)
+- ![React Icons](https://img.shields.io/badge/-React_Icons-61DAFB?logo=react&logoColor=white) **React Icons** (`react-icons`: `^5.2.1`)
+- ![React Redux](https://img.shields.io/badge/-React_Redux-764ABC?logo=redux&logoColor=white) **React Redux** (`react-redux`: `^7.2.3`)
+- ![React Router Dom](https://img.shields.io/badge/-React_Router_Dom-CA4245?logo=react-router&logoColor=white) **React Router Dom** (`react-router-dom`: `^6.23.1`)
+- ![Redux](https://img.shields.io/badge/-Redux-764ABC?logo=redux&logoColor=white) **Redux** (`redux`: `^4.0.5`)
+- ![Redux Thunk](https://img.shields.io/badge/-Redux_Thunk-764ABC?logo=redux&logoColor=white) **Redux Thunk** (`redux-thunk`: `^2.4.2`)
+- ![Sass](https://img.shields.io/badge/-Sass-CC6699?logo=sass&logoColor=white) **Sass** (`sass`: `^1.77.1`)
+- ![AlertifyJS](https://img.shields.io/badge/-AlertifyJS-FF9D00?logo=javascript&logoColor=white) **AlertifyJS** (`alertifyjs`: `^1.14.0`)
+- ![Axios](https://img.shields.io/badge/-Axios-5A29E4?logo=axios&logoColor=white) **Axios** (`axios`: `^1.7.0`)
+- ![MercadoPago SDK React](https://img.shields.io/badge/-MercadoPago_SDK_React-339AF0?logo=mercadopago&logoColor=white) **MercadoPago SDK React** (`@mercadopago/sdk-react`: `^0.0.19`)
+
+### **Back-end**
+- ![Dotenv](https://img.shields.io/badge/-Dotenv-ECD53F?logo=dotenv&logoColor=white) **Dotenv** (`dotenv`: `^8.2.0`)
+- ![Express](https://img.shields.io/badge/-Express-000000?logo=express&logoColor=white) **Express** (`express`: `^4.17.1`)
+- ![MercadoPago](https://img.shields.io/badge/-MercadoPago-339AF0?logo=mercadopago&logoColor=white) **MercadoPago** (`mercadopago`: `^1.5.8`)
+- ![Morgan](https://img.shields.io/badge/-Morgan-000000?logo=morgan&logoColor=white) **Morgan** (`morgan`: `^1.10.0`)
+- ![MySQL2](https://img.shields.io/badge/-MySQL2-4479A1?logo=mysql&logoColor=white) **MySQL2** (`mysql2`: `^3.10.0`)
+
+
+
+
+
 
 
