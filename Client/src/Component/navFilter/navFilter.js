@@ -1,129 +1,167 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './navFilters.css';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  Combined_Filter,
+  Filter_Quitar,
+} from '../../Redux/Actions/Usuario/Action-user';
 
 const NavFilter = () => {
+  const dispatch = useDispatch();
+  const cards = useSelector((state) => state.CopyCARDS); // Asegúrate de usar CopyCARDS como referencia
+  const [selectedType, setSelectedType] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedSize, setSelectedSize] = useState('');
+
+  const handleTypeChange = (type) => {
+    setSelectedType(type);
+    applyFilters(type, selectedCategory, selectedSize);
+  };
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    //alert(category)
+    applyFilters(selectedType, category, selectedSize);
+  };
+
+  const handleSizeChange = (size) => {
+    setSelectedSize(size);
+    applyFilters(selectedType, selectedCategory, size);
+  };
+
+  const applyFilters = (type, category, size) => {
+    dispatch(Combined_Filter(cards, type, category, size));
+  };
+
+  const handleQuitarFilter = () => {
+    setSelectedType('');
+    setSelectedCategory('');
+    setSelectedSize('');
+    dispatch(Filter_Quitar(cards));
+  };
+
   return (
     <div className="navfilter-container">
-     
       <div className="navfilter-section">
-      <h2 className="navfilter-subtitle-titulo">Filtros</h2>
-      <h4 className="navfilter-subtitle">Tipo</h4>
+        <h2 className="navfilter-subtitle-titulo">Filtros</h2>
+        <div onClick={handleQuitarFilter} className="filter-null">Quitar Filtros</div>
+        
+        <h4 className="navfilter-subtitle">Tipo</h4>
         <div className="navfilter-option">
-          <input type="checkbox" id="sneakers" name="category" />
-          <label htmlFor="sneakers">Caballero</label>
+          <input
+            type="radio"
+            id="caballero"
+            name="type"
+            value="caballero"
+            checked={selectedType === 'caballero'}
+            onChange={() => handleTypeChange('caballero')}
+          />
+          <label htmlFor="caballero">Caballero</label>
         </div>
         <div className="navfilter-option">
-          <input type="checkbox" id="boots" name="category" />
-          <label htmlFor="boots">Dama</label>
+          <input
+            type="radio"
+            id="dama"
+            name="type"
+            value="dama"
+            checked={selectedType === 'dama'}
+            onChange={() => handleTypeChange('dama')}
+          />
+          <label htmlFor="dama">Dama</label>
         </div>
+        <div className="navfilter-option">
+          <input
+            type="radio"
+            id="mixto"
+            name="type"
+            value="mixto"
+            checked={selectedType === 'mixto'}
+            onChange={() => handleTypeChange('mixto')}
+          />
+          <label htmlFor="mixto">Mixto</label>
+        </div>
+
+        <hr/>
+
         <h4 className="navfilter-subtitle">Categoría</h4>
         <div className="navfilter-option">
-          <input type="checkbox" id="sneakers" name="category" />
-          <label htmlFor="sneakers">Zapatillas</label>
+          <input
+            type="radio"
+            id="zapatilla"
+            name="zapatilla"
+            value="Zapatilla"
+            checked={selectedCategory === 'Zapatilla'}
+            onChange={() => handleCategoryChange('Zapatilla')}
+          />
+          <label htmlFor="zapatilla">Zapatillas</label>
         </div>
         <div className="navfilter-option">
-          <input type="checkbox" id="boots" name="category" />
-          <label htmlFor="boots">Botas</label>
+          <input
+            type="radio"
+            id="botas"
+            name="botas"
+            value="Botas"
+            checked={selectedCategory === 'Botas'}
+            onChange={() => handleCategoryChange('Botas')}
+          />
+          <label htmlFor="botas">Botas</label>
         </div>
         <div className="navfilter-option">
-          <input type="checkbox" id="sandals" name="category" />
-          <label htmlFor="sandals">Sandalias</label>
+          <input
+            type="radio"
+            id="sandalias"
+            name="sandalias"
+            value="Sandalias"
+            checked={selectedCategory === 'Sandalias'}
+            onChange={() => handleCategoryChange('Sandalias')}
+          />
+          <label htmlFor="sandalias">Sandalias</label>
         </div>
         <div className="navfilter-option">
-          <input type="checkbox" id="formal" name="category" />
-          <label htmlFor="formal">Formales</label>
+          <input
+            type="radio"
+            id="formales"
+            name="formales"
+            value="Formales"
+            checked={selectedCategory === 'Formales'}
+            onChange={() => handleCategoryChange('Formales')}
+          />
+          <label htmlFor="formales">Formales</label>
         </div>
-      </div>
+        <div className="navfilter-option">
+          <input
+            type="radio"
+            id="deportivos"
+            name="deportivos"
+            value="Deportivos"
+            checked={selectedCategory === 'Deportivos'}
+            onChange={() => handleCategoryChange('Deportivos')}
+          />
+          <label htmlFor="formales">Deportivos</label>
+        </div>
 
-      <div className="navfilter-section">
-        <h4 className="navfilter-subtitle">Tamaño</h4>
-        <div className="navfilter-option">
-          <input type="checkbox" id="size-36" name="size" />
-          <label htmlFor="size-36">36</label>
-        </div>
-        <div className="navfilter-option">
-          <input type="checkbox" id="size-37" name="size" />
-          <label htmlFor="size-37">37</label>
-        </div>
-        <div className="navfilter-option">
-          <input type="checkbox" id="size-38" name="size" />
-          <label htmlFor="size-38">38</label>
-        </div>
-        <div className="navfilter-option">
-          <input type="checkbox" id="size-39" name="size" />
-          <label htmlFor="size-39">39</label>
-        </div>
-        <div className="navfilter-option">
-          <input type="checkbox" id="size-40" name="size" />
-          <label htmlFor="size-40">40</label>
-        </div>
-        <div className="navfilter-option">
-          <input type="checkbox" id="size-41" name="size" />
-          <label htmlFor="size-41">41</label>
-        </div>
-        <div className="navfilter-option">
-          <input type="checkbox" id="size-42" name="size" />
-          <label htmlFor="size-42">42</label>
-        </div>
-        <div className="navfilter-option">
-          <input type="checkbox" id="size-43" name="size" />
-          <label htmlFor="size-43">43</label>
-        </div>
-        <div className="navfilter-option">
-          <input type="checkbox" id="size-44" name="size" />
-          <label htmlFor="size-44">44</label>
-        </div>
-      </div>
+        <hr/>
 
-      <div className="navfilter-section">
-        <h4 className="navfilter-subtitle">Color</h4>
-        <div className="navfilter-option">
-          <input type="checkbox" id="color-black" name="color" />
-          <label htmlFor="color-black">Negro</label>
-        </div>
-        <div className="navfilter-option">
-          <input type="checkbox" id="color-white" name="color" />
-          <label htmlFor="color-white">Blanco</label>
-        </div>
-        <div className="navfilter-option">
-          <input type="checkbox" id="color-red" name="color" />
-          <label htmlFor="color-red">Rojo</label>
-        </div>
-        <div className="navfilter-option">
-          <input type="checkbox" id="color-blue" name="color" />
-          <label htmlFor="color-blue">Azul</label>
-        </div>
-        <div className="navfilter-option">
-          <input type="checkbox" id="color-green" name="color" />
-          <label htmlFor="color-green">Verde</label>
-        </div>
-      </div>
-
-      <div className="navfilter-section">
-        <h4 className="navfilter-subtitle">Precio</h4>
-        <div className="navfilter-option">
-          <input type="radio" id="price-1" name="price" />
-          <label htmlFor="price-1">Hasta $50</label>
-        </div>
-        <div className="navfilter-option">
-          <input type="radio" id="price-2" name="price" />
-          <label htmlFor="price-2">$50 - $100</label>
-        </div>
-        <div className="navfilter-option">
-          <input type="radio" id="price-3" name="price" />
-          <label htmlFor="price-3">$100 - $150</label>
-        </div>
-        <div className="navfilter-option">
-          <input type="radio" id="price-4" name="price" />
-          <label htmlFor="price-4">$150 - $200</label>
-        </div>
-        <div className="navfilter-option">
-          <input type="radio" id="price-5" name="price" />
-          <label htmlFor="price-5">Más de $200</label>
-        </div>
+        <h4 className="navfilter-subtitle">Talla</h4>
+        {[...Array(17).keys()].map(i => {
+          const size = (i + 28).toString();
+          return (
+            <div className="navfilter-option" key={size}>
+              <input
+                type="radio"
+                id={size}
+                name="size"
+                value={size}
+                checked={selectedSize === size}
+                onChange={() => handleSizeChange(size)}
+              />
+              <label htmlFor={size}>{size}</label>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
-}
+};
 
 export default NavFilter;

@@ -13,6 +13,16 @@ export const ORDERDESARROLLADAS = "ORDERDESARROLLADAS" //! Creamos una orden de 
 export const ORDERUSER = "ORDERUSER" //!Buscamos las orders del usuario
 
 
+export const FiltrarCaballero = "FiltrarCaballero"
+export const FiltrarCaballeroAdd = "FiltrarCaballeroAdd"
+
+export const FiltrarDama = "FiltrarDama" //!filtrar - Damas 
+export const FiltrarDamaAdd ="FiltrarDama"
+export const FiltrarMixto = "FiltrarMixto"
+export const FilterFor = "FilterFor" //!fitlrado por 
+export const FiltrarCombinado = "FiltrarCombinado"
+export const MARCA = "MARCA"
+export const SinFiltros = "SinFiltros"
 
 
 

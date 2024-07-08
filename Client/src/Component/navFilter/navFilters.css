@@ -23,4 +23,26 @@
   .navfilter-option input {
     margin-right: 10px;
   }
-  
+  .filter-null{
+    cursor: pointer;
+    color: white;
+    font-weight: 400;
+    border: 2px solid;
+    background-color: blue;
+    border-radius: 20px;
+    width: 120px;
+    text-align: center;
+    border: solid black 2px;
+    margin-bottom: 20px;
+  }
+  .filter-null:hover{
+    color: white;
+    
+    background-color: green;
+  }
+
+  .filter-null:active{
+    color: black;
+    
+    background-color: greenyellow;
+  }

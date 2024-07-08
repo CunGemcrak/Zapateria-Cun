@@ -4,7 +4,18 @@ import { BUSCARUSUARIO,
   CARDSUSUARIO, 
   CARRITOACTIVO, 
   ORDERDESARROLLADAS,
-  ORDERUSER}from'../../Action-Tipes-js/actions-type-usuario'
+  ORDERUSER,
+  FiltrarCaballero,//!filtros - Filtrar Caballeros
+  FiltrarCaballeroAdd,//!Fitos - Add Caballeros
+  FiltrarDama, //!filtrar - Damas 
+  FiltrarDamaAdd,
+  MARCA,
+  SinFiltros,
+  FiltrarMixto,
+  FilterFor,
+  FiltrarCombinado//!combinados
+
+}from'../../Action-Tipes-js/actions-type-usuario'
 import axios from 'axios'
 import {   setUser, removeUser } from '../../../Component/Company/Company_Localstorang/Company_Localstorang';
 
@@ -226,6 +237,18 @@ export const Create_Order =  ( Id_Usuario, compra, items, totalCost, eliminar, e
 }
 
 
+
+
+export const Filr_Texto = (text) =>{
+  return async (dispatch)=>{
+
+    dispatch({
+      type: MARCA,
+      payload: text,
+  });
+   
+  }
+}
 // Redux action para actualizar el estado de la empresa
 
 
@@ -269,5 +292,153 @@ export const Buscar_Orders_Users = (id) => {
   }
 }
 
+export const Filter_Tipo_Caballero= (cards) =>{
+return async (dispatch)=>{
+
+  dispatch({
+    type: SinFiltros,
+    payload: cards,
+});
+  dispatch({
+    type: FiltrarCaballero,
+    payload: cards,
+});
 
 
+}
+}
+
+
+export const Filter_Tipo_Dama = (cards) =>{
+
+  return async (dispatch)=>{
+    dispatch({
+      type: SinFiltros,
+      payload: cards,
+  });
+
+
+//alert("distpach 1listo")
+    dispatch({
+      type: FiltrarDama,
+      payload: cards,
+  });
+  }
+
+}
+
+export const Filter_Tipo_Mixto = (cards)=>{
+  return async (dispatch)=>{
+    dispatch({
+      type: SinFiltros,
+      payload: cards,
+  });
+
+
+//alert("distpach 1listo")
+    dispatch({
+      type: FiltrarMixto,
+      payload: cards,
+  });
+  }
+}
+
+export const  Filter_Quitar = ()=>{
+  return async (dispatch)=>{
+
+
+    dispatch({
+      type: SinFiltros,
+     
+  });
+  }
+}
+
+export const Filter_For = (filter) => {
+  return async (dispatch)=>{
+
+
+    dispatch({
+      type: FilterFor,
+      payload:filter
+     
+  });
+  }
+}
+
+export const Combined_Filter = (cards, type, category, size, brand) => {
+  return async (dispatch) => {
+    let filteredCards = cards;
+
+    // Filtrar por tipo
+    if (type) {
+      switch (type) {
+        case 'caballero':
+          filteredCards = filteredCards.filter(card => card.tipo === 'Caballero');
+          break;
+        case 'dama':
+          filteredCards = filteredCards.filter(card => card.tipo === 'Dama');
+          break;
+        case 'mixto':
+          filteredCards = filteredCards.filter(card => card.tipo === 'Mixto');
+          break;
+        default:
+          break;
+      }
+    }
+
+    // Filtrar por categoría
+    if (category) {
+      filteredCards = filteredCards.filter(card => card.modelo === category);
+    }
+
+    // Filtrar por talla
+    if (size) {
+      filteredCards = filteredCards.filter(card => card.talla === size);
+    }
+
+    // Filtrar por marca
+    if (brand) {
+      const brandLowerCase = brand.toLowerCase();
+      filteredCards = filteredCards.filter(card => card.marca.toLowerCase().includes(brandLowerCase));
+    }
+
+    // Despachar la acción con las tarjetas filtradas
+    dispatch({
+      type: FiltrarCombinado,
+      payload: filteredCards,
+    });
+  };
+};
+
+export const Actualizar_Usuario = (id,  formData) =>{
+  return async (dispatch) => {
+ //alert("entro al Actualizar")
+    try {
+
+      const users = {
+                      id,
+                      name: formData.nombre,
+                      apell: formData.apellido,
+                      celular: formData.celular,
+                      email: formData.email,
+                      url:formData.url}
+
+
+
+      const endpoint = `http://localhost:3001/user/actualizardatos/${id}`; // Usamos los datos en la URL como parámetros de ruta
+      
+    //  alert("paso");
+      const response = await axios.put(endpoint, users);
+      const userData = response.data; 
+      console.log("esta es la data del usuario", userData.data);
+      
+      dispatch({
+        type: BUSCARUSUARIO,
+        payload: userData.data, // Enviamos userData directamente si es el objeto que contiene las órdenes
+      });
+    } catch (error) {
+     // alert("no encontro ordenes");
+    }
+  } 
+}

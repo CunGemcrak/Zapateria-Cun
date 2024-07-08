@@ -1,81 +1,151 @@
-.body-user-perfil {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #e4e4e4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    
+.body-user-perfil-centar{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.from-perfil {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 200;
-    border: 2px red solid;
-    padding: 30px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-
+.form-perfil-user h2 {
+ font-weight: 800;
 }
 
-.from-perfil h2 {
-    
-    background: linear-gradient();
-    font-weight: 400;
-    font-size: 25px;
-    color: #090808;
-    margin-bottom: 35px;
 
+
+
+.input-group-perfil{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px groove gainsboro;
+  border-radius: 10px;
+  height: auto;
+  margin-top: 10px;
+  padding: 5px;
+  width: 400px;
+  box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.274);
 }
-.input-container {
-    
-    position: relative;
-}
-.input-container > input {
-    
-    padding: 17px 15px 17px 65px;
-    width: 100%;
-    margin-bottom: 25px;
-    border-radius: 15px;
-    background-color: transparent;
-    border: 2px solid #cbcbcb;
-    font-size: 16px;
-    outline: none;
-    color: #1e1e1e;
+
+
+.input-group-perfil input{
+
+height: 100%;
+border: none;
+outline: none;
+background-color: transparent;
+width: 80%;  /* Cambiado para hacer espacio para el icono */
+font-size: 16px;
+margin: 5px;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
 }
 
-.placeholder {
 
-    color: #a0a0a0;
-    font-size: 16px;
-    text-align: right;
+
+
+
+
+
+
+
+
+.perfil-user-nombre .input-icon {
+  color: #ff4d4d; /* Color específico para el icono del campo nombre */
 }
 
-.button{
-   
-    cursor: pointer;
-}  
-
-
-.btn-editar{
-    cursor: pointer;
-    background-color: red;
-    border: solid 2px groove;
-    border-radius: 10px;
-    font-weight: 100;
-    color: white;
-    margin: 20px;
-    text-align: center;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-
+.perfil-user-apellido .input-icon {
+  color: #ff9933; /* Color específico para el icono del campo apellido */
 }
 
-   
+.perfil-user-celular .input-icon {
+  color: #33cc33; /* Color específico para el icono del campo celular */
+}
 
+.perfil-user-email .input-icon {
+  color: #3399ff; /* Color específico para el icono del campo email */
+}
+
+.perfil-user-pass .input-icon {
+  color: #cc66ff; /* Color específico para el icono del campo contraseña */
+}
+
+.perfil-user-url .input-icon {
+  color: #ff66cc; /* Color específico para el icono del campo URL de imagen */
+}
+
+.btn-editar {
+  cursor: pointer;
+  background-color: #ff4d4d; /* Rojo */
+  border: solid 2px #ff4d4d; /* Borde rojo */
+  border-radius: 10px;
+  font-weight: 600;
+  color: white;
+  margin-top: 20px;
+  padding: 10px 20px;
+  text-align: center;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.btn-editar:hover {
+  background-color: #ff3333; /* Cambio de color al pasar el mouse */
+  border-color: #ff3333; /* Cambio de borde al pasar el mouse */
+}
+
+
+
+
+
+
+.btn-cancelar {
+  margin: 10px;
+  cursor: pointer;
+  background-color: #ff4d4d; /* Rojo */
+  border: solid 2px #ff4d4d; /* Borde rojo */
+  border-radius: 10px;
+  font-weight: 600;
+  color: white;
+  margin-top: 20px;
+  padding: 10px 20px;
+  text-align: center;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  width: 120px;
+}
+
+.btn-cancelar:hover {
+  background-color: #ff3333; /* Cambio de color al pasar el mouse */
+  border-color: #ff3333; /* Cambio de borde al pasar el mouse */
+}
+
+
+.btn-group-edit{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.image-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.image-preview img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  .form-perfil-user {
+    width: 90%;
+    max-width: none;
+  }
+}

@@ -10,7 +10,7 @@ const CompanyStock = ()=>{
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(true);
     const empresa = useSelector((state) => state.EMPRESA || []);
-    const cards = useSelector((state) => state.CARDS || []);
+   // const cards = useSelector((state) => state.CARDS || []);
   
   
 
