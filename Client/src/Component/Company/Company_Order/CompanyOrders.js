@@ -24,9 +24,7 @@ const CompanyOrders = () => {
   const calcularCostoTotal = (items) => {
     return items.reduce((total, item) => total + parseFloat(item.costo) * item.quantity, 0);
   };
-  const handleBorrado = (id)=>{
-    alert(id)
-  }
+
   return (
     <>
       {loading ? <Loading /> : null}
@@ -42,7 +40,7 @@ const CompanyOrders = () => {
                   <th>Items</th>
                   <th>Precio Total</th>
                   <th>Estado</th>
-                  <th>Activar/Desactivar</th>
+                 
                 </tr>
               </thead>
               <tbody>
@@ -63,7 +61,7 @@ const CompanyOrders = () => {
                     </td>
                     <td>{calcularCostoTotal(order.item)}</td>
                     <td>{order.estado}</td>
-                    <td><div onClick={handleBorrado(order.id)}>botn</div></td>
+                   
                   </tr>
                 ))}
               </tbody>

@@ -1,38 +1,75 @@
-import './Registrar_Usuario.css'
+import './Registrar_Usuario.css';
 import React, { useState } from 'react';
-
-
-import {GuardrUsuario } from '../../../Redux/Actions/Usuario/Action-user'
 import { useDispatch } from 'react-redux';
+import { GuardrUsuario } from '../../../Redux/Actions/Usuario/Action-user';
 
- 
-const RegistrarUduario = ({setView}) => {
-  const dispatch = useDispatch()
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: ''
-      });
-    
-      const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-      };
-    
-      const handleSubmit = (e) => {
-        e.preventDefault();
-         console.log(formData); 
-     
-      };
+import alertify from 'alertifyjs';
+import 'alertifyjs/build/css/alertify.css';
+import 'alertifyjs/build/css/themes/default.css';
 
-      const HandleGuardar = () =>{
-        dispatch(GuardrUsuario(formData))
-      }
+
+const RegistrarUsuario = ({ setView }) => {
+  const dispatch = useDispatch();
+  
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
+  });
+
+  const [errors, setErrors] = useState([]);
+
+  const validateEmail = (email) => {
+    const re = /\S+@\S+\.\S+/;
+    return re.test(email);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+   
+    setFormData({ ...formData, [name]: value });
     
-      return (
-        <div>
-          <h2>Registro de Usuario</h2>
-          <form onSubmit={handleSubmit}>
+    // Clear errors as the user types
+    setErrors(errors.filter(error => !error.includes(name)));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    let validationErrors = [];
+
+    if (!formData.firstName) validationErrors.push('El nombre es obligatorio');
+    if (!formData.lastName) validationErrors.push('El apellido es obligatorio');
+    if (!formData.email) {
+      validationErrors.push('El email es obligatorio');
+    } else if (!validateEmail(formData.email)) {
+      validationErrors.push('El email no es válido');
+    }
+    if (!formData.password) validationErrors.push('La contraseña es obligatoria');
+
+    if (validationErrors.length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    // Submit form if validation passes
+    const state = await dispatch(GuardrUsuario(formData));
+    if(state ==="true"){
+        alertify.alert("Guadado" , "Ahora puedes ingresar con tu usaurio y contraseña")  
+        setView("login")  
+    }else{
+      alertify.alert("Error" , "Verifica tus datos usuario ya existe") 
+    }
+    
+  };
+
+  return (
+    <div className="body-empresa-register">
+      <div>
+        <h2 className="Titulos">Registro de Usuario</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="input-group-usuario">
             <label>
               Nombre:
               <input
@@ -42,7 +79,8 @@ const RegistrarUduario = ({setView}) => {
                 onChange={handleChange}
               />
             </label>
-            <br />
+          </div>
+          <div className="input-group-usuario">
             <label>
               Apellido:
               <input
@@ -52,7 +90,8 @@ const RegistrarUduario = ({setView}) => {
                 onChange={handleChange}
               />
             </label>
-            <br />
+          </div>
+          <div className="input-group-usuario">
             <label>
               Email:
               <input
@@ -62,7 +101,8 @@ const RegistrarUduario = ({setView}) => {
                 onChange={handleChange}
               />
             </label>
-            <br />
+          </div>
+          <div className="input-group-usuario">
             <label>
               Contraseña:
               <input
@@ -72,10 +112,18 @@ const RegistrarUduario = ({setView}) => {
                 onChange={handleChange}
               />
             </label>
-            <br />
-            <div onClick={HandleGuardar} className='btn-Enviar'>Registrarse</div>
-          </form>
-        </div>
-      );
-    };
-export default RegistrarUduario;
+          </div>
+          <div className="error-messages">
+            {errors.map((error, index) => (
+              <p key={index} className="error">{error}</p>
+            ))}
+          </div>
+          <button type="submit" className="btn-Enviar">Registrarse</button>
+        </form>
+      </div>
+      <div onClick={() => setView("login")} className="btn-Link">Ya tienes cuenta? Iniciar sesión</div>
+    </div>
+  );
+};
+
+export default RegistrarUsuario;
