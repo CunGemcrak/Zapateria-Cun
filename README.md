@@ -132,4 +132,5 @@ Para el desarrollo del ejercicio se implementan tecnologías como:
 
 
 ## 📊 Modelo Relacional: Estructura Eficiente para Gestionar Datos
+![modelo relacional](https://github.com/CunGemcrak/Zapateria-Cun/assets/142614397/8cb16138-791c-4d82-877d-5f7e8a3f855c)
 
