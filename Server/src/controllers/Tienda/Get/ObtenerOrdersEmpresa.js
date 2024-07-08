@@ -1,4 +1,3 @@
-// controllers/Tienda/Get/ObtenerOrdersEmpresa.js
 const { Venta } = require('../../../db.js');
 
 const ObtenerOrdersEmpresa = async (req, res) => {
@@ -21,7 +20,7 @@ const ObtenerOrdersEmpresa = async (req, res) => {
       };
     }).filter(venta => venta.item.length > 0);
 
-    console.log("mensaje "+JSON.stringify(ventasFiltradas));
+    console.log("Ventas filtradas: " + JSON.stringify(ventasFiltradas));
 
     if (ventasFiltradas.length === 0) {
       return res.status(404).json({ error: 'No se encontraron ventas para la tienda especificada' });
