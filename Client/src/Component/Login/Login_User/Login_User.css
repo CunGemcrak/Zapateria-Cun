@@ -12,7 +12,7 @@
 
 /*input contenedores */
 .Login-container-input {
-  width: 100%;
+  width: 400px;
   display: flex;
   flex-direction: column;
   padding: 5px;
@@ -28,10 +28,10 @@
   justify-content: center;
   border: 2px groove gainsboro;
   border-radius: 10px;
-  height: 40px;
+  height: auto;
   margin-top: 10px;
   padding: 5px;
-  width: 350px;
+  width: 400px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 

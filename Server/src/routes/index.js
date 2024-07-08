@@ -16,6 +16,7 @@ const { BuscarOrdersUsers } = require('../controllers/Usuario/Get/BuscarOrdersUs
 
 
 const {DataTiendaUsuario} = require('../controllers/Tienda/Get/Data_Tienda');
+const {ModificarUsuario} = require('../controllers/Usuario/Put/Modificar_Usuario')
 
 
 
@@ -35,6 +36,11 @@ const {ObtenerOrdersEmpresa} =require('../controllers/Tienda/Get/ObtenerOrdersEm
 const {ActualizarEmpresa} = require('../controllers/Tienda/Put/ActualizarEmpresa')
 const {Activar_Ocultar_Card} = require('../controllers/Tienda/Put/Activar_Ocultar_Card')
 const {ActualizaOrder} = require('../controllers/Tienda/Get/Actualizar_Estado_Orden')
+const {ActualizaCardsEmpresa} = require('../controllers/Tienda/Put/ActualizaCardsEmpresa')
+
+
+//!Emrpesa delete
+const {EliminarZapatoEmrpesa} = require('../controllers/Tienda/Delete/EliminarZapatoEmrpesa')
 
 
 
@@ -60,7 +66,8 @@ router.get('/empresa/:id', obtenerTienda)
 router.post('/empresa/categorias',obtenerCategorias)
 router.get('/empresa/buscar/stock/:id', ObtenerCardsEmpresa)
 router.get('/empresa/orders/all/:id', ObtenerOrdersEmpresa)
-
+router.put('/empresa/actualizar/zapato/:id', ActualizaCardsEmpresa)
+router.delete('/empresa/eliminar/zapato/:id', EliminarZapatoEmrpesa)
 
 
 router.put('/empresa/update/:id', ActualizarEmpresa)
@@ -78,6 +85,7 @@ router.post('/user/create/order', CreateOrderVenta)//!Se crea la orden de venta
 router.get('/user/orders/:id', BuscarOrdersUsers)//!buscar las ordenes del usuario
 router.get('/user/:correo/:pass', BusquedaUsuario);
 router.get('/user/zapatos', BusquedaZapatosUsuario)
+router.put('/user/actualizardatos/:id', ModificarUsuario)//!modificamos datos del usuario 
 
 
 

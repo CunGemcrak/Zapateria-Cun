@@ -14,10 +14,9 @@ const ZapatosCards = () => {
     dispatch(Muestra_Cards());
   }, [dispatch]);
 
-
-
   const filteredCards = cards.filter(card => {
-    if (empresa.status === "true") {
+    if (empresa.status === "true" && empresa.id === Number(card.tienda)) {
+    
       return true;
     }
     if (User.state === "true" && card.activo === "true") {
@@ -33,7 +32,7 @@ const ZapatosCards = () => {
           <ZapatosCard
             key={card.id}
             id={card.id}
-            tienda = {card.tienda}
+            tienda={card.tienda}
             marca={card.marca}
             costo={card.costo}
             color={card.color}
@@ -46,7 +45,7 @@ const ZapatosCards = () => {
           />
         ))
       ) : (
-        <div>No hay usuario registrado o no hay tarjetas activas</div>
+        <div>No hay tarjetas disponibles que cumplan los criterios de filtrado</div>
       )}
     </div>
   );

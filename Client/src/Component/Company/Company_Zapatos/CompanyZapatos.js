@@ -224,7 +224,7 @@ const CompanyZapatos = () => {
                                     </option>
                                 ))}
                             </select>
-                            <label className='btn-mas' onClick={hanldeAddTalla} title='Agregar una nueva talla'>+</label>
+                          
                         </div>
                     </div>
                     <div className="form-group">
@@ -251,7 +251,7 @@ const CompanyZapatos = () => {
                                     </option>
                                 ))}
                             </select>
-                            <label className='btn-mas' onClick={hanldeAddMarca} title='Agregar una nueva marca'>+</label>
+                           
                         </div>
                     </div>
                     <div className="form-group">
@@ -269,7 +269,7 @@ const CompanyZapatos = () => {
                                     </option>
                                 ))}
                             </select>
-                            <label className='btn-mas' onClick={hanldeAddMarca} title='Agregar una nueva marca'>+</label>
+                         
                         </div>
                     </div>
                     <div className="form-group">
@@ -287,7 +287,7 @@ const CompanyZapatos = () => {
                                     </option>
                                 ))}
                             </select>
-                            <label className='btn-mas' onClick={hanldeAddMarca} title='Agregar una nueva marca'>+</label>
+                          
                         </div>
                     </div>
 

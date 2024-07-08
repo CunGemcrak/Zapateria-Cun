@@ -309,18 +309,63 @@ export const Activar_Ocultar_Cards = (id) =>{
 }
 
 
-export const Buscar_Orders_Empresa = (id)=>{
-  return async (dispatch) =>{
-    
-    
+export const Buscar_Orders_Empresa = (id) => {
+  return async (dispatch) => {
     const endpoint = `http://localhost:3001/empresa/orders/all/${id}`; // URL del endpoint con el ID de la empresa
-    const response = await axios.get(endpoint);
-    const userData = response.data;
+    try {
+      const response = await axios.get(endpoint);
+      const userData = response.data;
+
+      if (userData) {
+        dispatch({
+          type: EMPRESAORDERS, // Tipo de acción exitosa
+          payload: userData // Datos de las cards obtenidas
+        });
+      } else {
+        console.log("No se encontraron datos para esta empresa");
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        console.error("Error 404: No se encontraron ventas para la tienda especificada");
+      } else {
+        console.error("Error al obtener las órdenes de la empresa:", error);
+      }
+    }
+  }
+}
+
+export const Actualiza_Card = (id,tienda,formData) =>{
+  return async (dispatch) =>{
+    const zapato = {
+      id,
+    
+      tienda,
+      marca:formData.marca ,
+      costo:formData.costo ,
+      color:formData.color,
+      modelo:formData.categoria,
+      calidad:formData.calidad,
+      talla:formData.talla,
+      activo:false
+    }
+    
+    const endpoint = `http://localhost:3001/empresa/actualizar/zapato/${id}`; // URL del endpoint con el ID de la empresa
+      const response = await axios.put(endpoint, zapato);
+      const userData = response.data;
+      console.log("estado actual " + JSON.stringify(userData.data));
+    return userData.data
+  }
+}
 
 
-    dispatch({
-      type: EMPRESAORDERS, // Tipo de acción exitosa (debes definir este tipo en tus acciones Redux)
-      payload: userData // Datos de las cards obtenidas, asumiendo que userData tiene una propiedad 'cards'
-    });
+export const Eliminar_Card = (id)=>{
+  return async (dispatch) =>{
+  
+    
+    const endpoint = `http://localhost:3001/empresa/eliminar/zapato/${id}`; // URL del endpoint con el ID de la empresa
+      const response = await axios.delete(endpoint);
+      const userData = response.data;
+      console.log("estado eliminado " + JSON.stringify(userData.data));
+    return userData.data
   }
 }
