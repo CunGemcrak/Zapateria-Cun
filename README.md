@@ -91,7 +91,7 @@ Para el desarrollo del ejercicio se implementan tecnologías como:
 <br />
 
 ## **⚠️ Funciones y Características**
-### 📌 Nuestra aplicación desarrolla:
+### 📌 Nuestra aplicación muestra componentes para:
 
 ### 👤 **El usuario**:
 1. Un usuario es el encargado de desarrollar las compras en las diferentes tiendas que brindan sus servicios. Los procesos de registro y compras se verifican con un correo que se envía automáticamente por el evento desarrollado.
