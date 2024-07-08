@@ -63,6 +63,16 @@ export const Buscar_Empresa = (correo, pass)=>{
 };
 }
 
+
+export const LogalstorangEmpresa = (datos)=>{
+  return async (dispatch) => {
+    dispatch({
+      type: BUSCAREMPRESA,
+      payload: datos,
+  });
+}
+}
+
 //! Modificar Empresa
 
 export const Actualizar_Datos_Company = (datos, id)=>{

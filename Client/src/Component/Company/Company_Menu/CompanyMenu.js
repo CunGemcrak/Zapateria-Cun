@@ -1,12 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaSignOutAlt, FaBuilding, FaPlusSquare, FaCheckCircle, FaListAlt  } from 'react-icons/fa';
 import './CompanyMenu.css';
 import iconEstiloZap from '../../loading/img/download.gif';
 
+import { getEmpresa, removeEmpresa } from '../Company_Localstorang/Company_Localstorang';
+
+
+import {LogalstorangEmpresa, Busqueda_Color, Busqueda_Tallas, Buscueda_Calidad, Busqueda_Marca, Buscar_Categoria} from '../../../Redux/Actions/Empresa/Actions-Empresa'
+import { useDispatch, useSelector } from 'react-redux';
+
 const CompanyMenu = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const emrpesa = useSelector((state)=>state.EMPRESA || [])
   const navigator = useNavigate();
+
+  const dispatch = useDispatch()
+
+
+
+
+  useEffect(() => {
+    const storedUser = getEmpresa();
+    if (!emrpesa || emrpesa.status === "false") {
+      if (!storedUser || storedUser.status === "false") {
+        navigator('/');
+      } else {
+      //  dispatch(Buscar_Orders_Users(storedUser.id));
+        dispatch(LogalstorangEmpresa(storedUser));
+        dispatch(Busqueda_Color())
+        dispatch(Busqueda_Tallas())
+        dispatch(Buscueda_Calidad())
+        dispatch(Busqueda_Marca())
+        dispatch(Buscueda_Calidad())
+        dispatch(Buscar_Categoria())
+      }
+    } 
+  }, [navigator, emrpesa, dispatch]);
+
+
 
   const handlePerfil = () => {
     navigator('/company');
@@ -17,7 +49,9 @@ const CompanyMenu = () => {
   };
 
   const hondleSalir = () => {
-    // dispatch(Salir_Usuario())
+  
+    removeEmpresa()
+    navigator('/');
   };
 
 const handleZapatos = () =>{
@@ -72,9 +106,9 @@ const handleStock = () =>{
             <span className="icon-label">ventras</span>
           </div>
         </div>
-        <div className="nav-item">
-          <button className="logout-button">
-            <FaSignOutAlt className="icon" onClick={hondleSalir} />
+        <div className="nav-item" onClick={hondleSalir} >
+          <button className="logout-button" >
+            <FaSignOutAlt className="icon" />
             <span className="icon-label">Salir</span>
           </button>
         </div>

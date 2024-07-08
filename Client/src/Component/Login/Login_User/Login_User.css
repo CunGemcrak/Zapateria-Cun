@@ -174,3 +174,13 @@
 .input-group-checked label{
   margin-right: 30px;
 }
+/* Agregado para ajustar iconos */
+.icon {
+  max-width: 20px;
+  height: auto;
+  margin: 5px;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Mantén el resto de tu CSS como está */

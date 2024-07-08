@@ -1,42 +1,82 @@
+.body-empresa-register{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  border: 2px red solid;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-group-usuario{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px groove gainsboro;
+  border-radius: 10px;
+  height: auto;
+  margin-top: 10px;
+  padding: 5px;
+  width: 400px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-group-usuario input{
+  height: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 16px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%; /* Adjust as needed */
+}
+
 .btn-Enviar {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    height: 40px;
-    background: linear-gradient(283deg, #ff2426, #ff9259);
-    width: 350px;
-    color: white;
-    border: 2px solid black;
-    padding: 5px 10px;
-    border-radius: 10px;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    display: inline-block;
-    font-weight: bolder;
-    text-align: center;
-  }
-  
-  .btn-Enviar:hover {
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .btn-Enviar::after {
-    content: "";
-    background: #030303;
-    position: absolute;
-    z-index: -1;
-    padding: 5px 10px;
-    display: block;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    transform: scale(0, 0);
-    transition: all 0.3s ease;
-  }
-  
-  .btn-Enviar:hover::after {
-    transition: all 0.3s ease-out;
-    transform: scale(1, 1);
-  }
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 40px;
+  background: linear-gradient(283deg, #ff2426, #ff9259);
+  width: 100%;
+  color: white;
+  border: 2px solid black;
+  padding: 5px 10px;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.btn-Enviar:hover {
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-Enviar::after {
+  content: "";
+  background: #030303;
+  position: absolute;
+  z-index: -1;
+  padding: 5px 10px;
+  display: block;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform: scale(0, 0);
+  transition: all 0.3s ease;
+}
+
+.btn-Enviar:hover::after {
+  transition: all 0.3s ease-out;
+  transform: scale(1, 1);
+}

@@ -1,14 +1,14 @@
 import { BUSCARUSUARIO, 
   SALIRCUENTAUSUARIO, 
-  GUARDARUSUARIO, 
+
   CARDSUSUARIO, 
   CARRITOACTIVO, 
   ORDERDESARROLLADAS,
   ORDERUSER,
   FiltrarCaballero,//!filtros - Filtrar Caballeros
-  FiltrarCaballeroAdd,//!Fitos - Add Caballeros
+//!Fitos - Add Caballeros
   FiltrarDama, //!filtrar - Damas 
-  FiltrarDamaAdd,
+
   MARCA,
   SinFiltros,
   FiltrarMixto,
@@ -93,10 +93,12 @@ export const GuardrUsuario = (userDatas) =>{
             console.log("Mensaje de respuesta: " + JSON.stringify(userData));
 
 
-            dispatch({
+            /*dispatch({
                 type: GUARDARUSUARIO,
                 payload: userData,
             });
+            if()*/
+            return userData.state
       
         } catch (error) {
             console.log("Error al enviar la información", error.message);
@@ -441,4 +443,31 @@ export const Actualizar_Usuario = (id,  formData) =>{
      // alert("no encontro ordenes");
     }
   } 
+}
+
+export const Verificar_Clave = (correo) =>{
+  return async (dispatch) => {
+    const email = {
+      email:correo
+
+    }
+  //  alert("este es ek email"+ email)
+    try {
+      const endpoint = `http://localhost:3001/user/datos/id/`; // Usamos los datos en la URL como parámetros de ruta
+      
+    //  alert("paso");
+      const response = await axios.post(endpoint, email);
+      const userData = response.data; 
+      console.log("esta es la data de la tienda", userData.estado);
+      
+    /*  dispatch({
+        type: ORDERUSER,
+        payload: userData, // Enviamos userData directamente si es el objeto que contiene las órdenes
+      });*/
+      return userData.estado
+    } catch (error) {
+     // alert("no encontro ordenes");
+    }
+
+  }
 }
