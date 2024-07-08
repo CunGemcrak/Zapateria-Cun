@@ -90,27 +90,36 @@ Para el desarrollo del ejercicio se implementan tecnologías como:
 
 <br />
 
-## **📌Funciones y Características**
-###  Nuestra aplicación desarrolla:
+## **⚠️ Funciones y Características**
+### 📌 Nuestra aplicación desarrolla:
 
 ### 👤 **El usuario**:
 1. Un usuario es el encargado de desarrollar las compras en las diferentes tiendas que brindan sus servicios. Los procesos de registro y compras se verifican con un correo que se envía automáticamente por el evento desarrollado.
-   1.1. 📝 Registrar usuario
-   1.2. 🛠 Administrar sus datos
-   1.3. 🛒 Seleccionar elementos para su carrito de compras
-      - 1.3.1. 🛍 Desarrollar una orden de su compra
-      - 1.3.2. 💳 Desarrollar el pago de la compra a través de la plataforma Mercado Pago
-   1.4. 📜 Verificar las compras desarrolladas
+    <ol>
+        <li>📝 Registrar usuario</li>
+        <li>🛠 Administrar sus datos</li>
+        <li>🛒 Seleccionar elementos para su carrito de compras
+            <ul>
+                <li>🛍 Desarrollar una orden de su compra</li>
+                <li>💳 Desarrollar el pago de la compra a través de la plataforma Mercado Pago</li>
+            </ul>
+        </li>
+        <li>📜 Verificar las compras desarrolladas</li>
+    </ol>
 
 ### 🏬 **La Tienda**:
-2.1. 📝 Registro de tienda
-2.2. 🛠 Administración de datos
-2.3. 👟 Creación de tarjeta de zapato para Stock
-2.4. 📦 Administración de Stock para actualizar o modificar tarjetas o, en su defecto, ocultar al público o eliminar si es necesario
-2.5. ✅ Verificación de órdenes, donde se identifica cuál es el estado de la orden (Aprobado, Rechazado, En Proceso)
+<ol start="2">
+    <li>📝 Registro de tienda</li>
+    <li>🛠 Administración de datos</li>
+    <li>👟 Creación de tarjeta de zapato para Stock</li>
+    <li>📦 Administración de Stock para actualizar o modificar tarjetas o, en su defecto, ocultar al público o eliminar si es necesario</li>
+    <li>✅ Verificación de órdenes, donde se identifica cuál es el estado de la orden (Aprobado, Rechazado, En Proceso)</li>
+</ol>
 
 ### 📱 **La Aplicación**:
-3.1. 🔍 Filtros: Los filtros permiten seleccionar por palabras o características propias de las tarjetas de zapato que muestran el Stock de las diferentes tiendas
+<ol start="3">
+    <li>🔍 Filtros: Los filtros permiten seleccionar por palabras o características propias de las tarjetas de zapato que muestran el Stock de las diferentes tiendas</li>
+</ol>
 
 ### 🚀 **Procesos Futuros**:
 - Se plantea desarrollar un esquema de comentarios para conocer la opinión del cliente con respecto al proceso desarrollado.
