@@ -85,10 +85,34 @@ Para el desarrollo del ejercicio se implementan tecnologías como:
 - ![MercadoPago](https://img.shields.io/badge/-MercadoPago-339AF0?logo=mercadopago&logoColor=white) **MercadoPago** (`mercadopago`: `^1.5.8`)
 - ![Morgan](https://img.shields.io/badge/-Morgan-000000?logo=morgan&logoColor=white) **Morgan** (`morgan`: `^1.10.0`)
 - ![MySQL2](https://img.shields.io/badge/-MySQL2-4479A1?logo=mysql&logoColor=white) **MySQL2** (`mysql2`: `^3.10.0`)
+- 
 
 
+<br />
 
+## **📌Funciones y Características**
+###  Nuestra aplicación desarrolla:
 
+### 👤 **El usuario**:
+1. Un usuario es el encargado de desarrollar las compras en las diferentes tiendas que brindan sus servicios. Los procesos de registro y compras se verifican con un correo que se envía automáticamente por el evento desarrollado.
+   1.1. 📝 Registrar usuario
+   1.2. 🛠 Administrar sus datos
+   1.3. 🛒 Seleccionar elementos para su carrito de compras
+      - 1.3.1. 🛍 Desarrollar una orden de su compra
+      - 1.3.2. 💳 Desarrollar el pago de la compra a través de la plataforma Mercado Pago
+   1.4. 📜 Verificar las compras desarrolladas
 
+### 🏬 **La Tienda**:
+2.1. 📝 Registro de tienda
+2.2. 🛠 Administración de datos
+2.3. 👟 Creación de tarjeta de zapato para Stock
+2.4. 📦 Administración de Stock para actualizar o modificar tarjetas o, en su defecto, ocultar al público o eliminar si es necesario
+2.5. ✅ Verificación de órdenes, donde se identifica cuál es el estado de la orden (Aprobado, Rechazado, En Proceso)
+
+### 📱 **La Aplicación**:
+3.1. 🔍 Filtros: Los filtros permiten seleccionar por palabras o características propias de las tarjetas de zapato que muestran el Stock de las diferentes tiendas
+
+### 🚀 **Procesos Futuros**:
+- Se plantea desarrollar un esquema de comentarios para conocer la opinión del cliente con respecto al proceso desarrollado.
 
 
