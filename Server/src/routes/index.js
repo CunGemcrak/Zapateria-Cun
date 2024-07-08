@@ -10,6 +10,8 @@ const { CrearEmpresa } = require('../controllers/Usuario/Post/Crear_Empresa');
 const { CreateOrderVenta } = require('../controllers/Usuario/Post/CreateOrderVenta')
 const { BuscarOrdersUsers } = require('../controllers/Usuario/Get/BuscarOrdersUsers')
 
+const {CorreoClaveUsers} = require('../controllers/Usuario/Get/CorreoClaveUsers')
+
 
 
 
@@ -79,13 +81,18 @@ router.post('/empresa/create/stock', CrearStock)
 
 
 //!MEtodos Usuario 
+
 router.post('/user/create', CrearUsuario)
 router.post('/user/venta', CrearCompra) //!sse crea la url de mercado pago
 router.post('/user/create/order', CreateOrderVenta)//!Se crea la orden de venta 
+router.post('/user/datos/id/', CorreoClaveUsers)
 router.get('/user/orders/:id', BuscarOrdersUsers)//!buscar las ordenes del usuario
 router.get('/user/:correo/:pass', BusquedaUsuario);
 router.get('/user/zapatos', BusquedaZapatosUsuario)
 router.put('/user/actualizardatos/:id', ModificarUsuario)//!modificamos datos del usuario 
+
+
+
 
 
 

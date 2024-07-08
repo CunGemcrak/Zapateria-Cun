@@ -1,6 +1,9 @@
 const { Empresa } = require('../../../db.js');
 const { Op } = require('sequelize');
 
+const { MAIL_STILOZAP } = process.env;
+const { transporter } = require('../../config/nodeMailerConfig');
+
 const CrearEmpresa = async (req, res) => {
   const { name, celular, correo, password } = req.body;
   console.log('Este es el query: ' + JSON.stringify(req.body));
@@ -35,6 +38,44 @@ const CrearEmpresa = async (req, res) => {
       });
 
       if (created) {
+
+
+
+
+
+        await transporter.sendMail({
+          from: `Empresa Registrado 😊 <${MAIL_STILOZAP}>`,
+          to: correo,
+          subject: "Empresa Registrado  😊",
+          html: `
+            <h2>Nuevo Registro</h2>
+            <p>Hola ${name},</p>
+            <p>Te damos la bienvenida  EstiloZap mundo del zapato.  👟</strong></p>
+           
+            <div style="text-align: center;">
+              <div style="display: inline-block; border-radius: 50%; overflow: hidden; border: 2px solid black; width: 150px; height: 150px;">
+                <img src="https://firebasestorage.googleapis.com/v0/b/stylezapapp.appspot.com/o/documentos%2Fdownload.gif?alt=media&token=50b7946a-5726-40ad-ad54-f3ed4a5edcd5" alt="Imagen Aprobado" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+            </div>
+            <br/>
+            <p style="text-align: center;">Equipo Estilo Zap web master</p>
+          `,
+      });
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
         console.log('Datos guardados correctamente');
         return res.status(200).json({ message: 'Datos guardados correctamente' });
       } else {

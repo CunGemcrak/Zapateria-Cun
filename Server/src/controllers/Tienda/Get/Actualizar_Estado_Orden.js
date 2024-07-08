@@ -2,7 +2,7 @@
 const { Venta, User } = require('../../../db.js');
 const { MAIL_CLUB } = process.env;
 
-const { transporter } = require('../../config/nodeMailerConfig')
+const { transporter } = require('../../config/nodeMailerConfig.js')
 
 const ActualizaOrder = async (req, res) => {
   const { id } = req.params; // Obtén el ID de la empresa desde los parámetros de la ruta
